@@ -1,0 +1,321 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\bibAnnoteFile}[1]{%
+  \IfFileExists{#1}{\begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+\providecommand{\bibAnnote}[2]{%
+  \begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ #2\end{quotation}}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{Swartz2018}
+Swartz JR (2018) {Expanding biological applications using cell-free metabolic
+  engineering: an overview}.
+\newblock Metabolic engineering 50: 156--172.
+\bibAnnoteFile{Swartz2018}
+
+\bibitem{silverman2020cell}
+Silverman AD, Karim AS, Jewett MC (2020) Cell-free gene expression: an expanded
+  repertoire of applications.
+\newblock Nature reviews genetics 21: 151--170.
+\bibAnnoteFile{silverman2020cell}
+
+\bibitem{Bundy_2018}
+Bundy BC, Hunt JP, Jewett MC, Swartz JR, Wood DW, et~al. (2018) Cell-free
+  biomanufacturing.
+\newblock Current opinion in chemical engineering 22: 177–183.
+\bibAnnoteFile{Bundy_2018}
+
+\bibitem{CFPS-Review-2020}
+Vilkhovoy M, Adhikari A, Vadhin S, Varner JD (2020) The evolution of cell free
+  biomanufacturing.
+\newblock Processes 8: 675.
+\bibAnnoteFile{CFPS-Review-2020}
+
+\bibitem{garenne2021cell}
+Garenne D, Haines MC, Romantseva EF, Freemont P, Strychalski EA, et~al. (2021)
+  Cell-free gene expression.
+\newblock Nature reviews methods primers 1: 1--18.
+\bibAnnoteFile{garenne2021cell}
+
+\bibitem{moore2017cell}
+Moore SJ, MacDonald JT, Freemont PS (2017) Cell-free synthetic biology for in
+  vitro prototype engineering.
+\newblock Biochemical Society Transactions 45: 785--791.
+\bibAnnoteFile{moore2017cell}
+
+\bibitem{hunt2025cellfree}
+Hunt AC, Rasor BJ, Seki K, Ekas HM, Warfel KF, et~al. (2025) Cell-free gene
+  expression: methods and applications.
+\newblock Chemical Reviews 125: 91--149.
+\bibAnnoteFile{hunt2025cellfree}
+
+\bibitem{Vilkhovoy:2018aa}
+Vilkhovoy M, Horvath N, Shih CH, Wayman JA, Calhoun K, et~al. (2018) {Sequence
+  Specific Modeling of \textit{E.~coli} Cell-Free Protein Synthesis}.
+\newblock ACS Synth Biol 7: 1844-1857.
+\bibAnnoteFile{Vilkhovoy:2018aa}
+
+\bibitem{Horvath2020}
+Horvath N, Vilkhovoy M, Wayman J, Calhoun K, Swartz J, et~al. (2020) {Toward a
+  genome scale sequence specific dynamic model of cell-free protein synthesis
+  in Escherichia coli}.
+\newblock Metab Eng Comm 10: e00113.
+\bibAnnoteFile{Horvath2020}
+
+\bibitem{karzbrun2011coarse}
+Karzbrun E, Shin J, Bar-Ziv RH, Noireaux V (2011) Coarse-grained dynamics of
+  protein synthesis in a cell-free system.
+\newblock Physical review letters 106: 048104.
+\bibAnnoteFile{karzbrun2011coarse}
+
+\bibitem{soltani2018reengineering}
+Soltani M, Davis BR, Ford H, Nelson JAD, Bundy BC (2018) Reengineering
+  cell-free protein synthesis as a biosensor: Biosensing with transcription,
+  translation, and protein-folding.
+\newblock Biochemical Engineering Journal 138: 165--171.
+\bibAnnoteFile{soltani2018reengineering}
+
+\bibitem{grawe2019paper}
+Gr{\"a}we A, Dreyer A, Vornholt T, Barteczko U, Buchholz L, et~al. (2019) A
+  paper-based, cell-free biosensor system for the detection of heavy metals and
+  date rape drugs.
+\newblock PloS one 14: e0210940.
+\bibAnnoteFile{grawe2019paper}
+
+\bibitem{voyvodic2020cell}
+Voyvodic PL, Bonnet J (2020) Cell-free biosensors for biomedical applications.
+\newblock Current opinion in biomedical engineering 13: 9--15.
+\bibAnnoteFile{voyvodic2020cell}
+
+\bibitem{jung2020cell}
+Jung JK, Alam KK, Verosloff MS, Capdevila DA, Desmau M, et~al. (2020) Cell-free
+  biosensors for rapid detection of water contaminants.
+\newblock Nature biotechnology 38: 1451--1459.
+\bibAnnoteFile{jung2020cell}
+
+\bibitem{pardee2014based}
+Pardee K, Green AA, Ferrante T, Cameron DE, DaleyKeyser A, et~al. (2014)
+  Paper-based synthetic gene networks.
+\newblock Cell 159: 940--954.
+\bibAnnoteFile{pardee2014based}
+
+\bibitem{wen2017cell}
+Wen KY, Cameron L, Chappell J, Jensen K, Bell DJ, et~al. (2017) A cell-free
+  biosensor for detecting quorum sensing molecules in p. aeruginosa-infected
+  respiratory samples.
+\newblock ACS synthetic biology 6: 2293--2301.
+\bibAnnoteFile{wen2017cell}
+
+\bibitem{li2025cellfree}
+Li Y, Lucci T, Dujovne MV, Jung JK, Capdevila DA, et~al. (2025) A cell-free
+  biosensor signal amplification circuit with polymerase strand recycling.
+\newblock Nature Chemical Biology 21: 949--958.
+\bibAnnoteFile{li2025cellfree}
+
+\bibitem{mcsweeney2025modular}
+McSweeney MA, Patterson AT, Loeffler K, Cuellar Lelo~de Larrea R, McNerney MP,
+  et~al. (2025) A modular cell-free protein biosensor platform using split {T7}
+  {RNA} polymerase.
+\newblock Science Advances 11: eado6280.
+\bibAnnoteFile{mcsweeney2025modular}
+
+\bibitem{voyvodic2019plug}
+Voyvodic PL, Pandi A, Koch M, Conejero I, Valjent E, et~al. (2019)
+  Plug-and-play metabolic transducers expand the chemical detection space of
+  cell-free biosensors.
+\newblock Nature communications 10: 1--8.
+\bibAnnoteFile{voyvodic2019plug}
+
+\bibitem{gyorgy2016resource}
+Gy{\"o}rgy A, Jimenez JI, Yazbek J, Huang HH, Chung H, et~al. (2015) Isocost
+  lines describe the cellular economy of genetic circuits.
+\newblock Biophysical journal 109: 639--646.
+\bibAnnoteFile{gyorgy2016resource}
+
+\bibitem{weisse2015mechanistic}
+Weisse AY, Oyarz{\'u}n DA, Danos V, Swain PS (2015) Mechanistic links between
+  cellular trade-offs, gene expression, and growth.
+\newblock Proceedings of the National Academy of Sciences 112: E1038--E1047.
+\bibAnnoteFile{weisse2015mechanistic}
+
+\bibitem{stogbauer2012experiment}
+St{\"o}gbauer T, Windhager L, Zimmer R, R{\"a}dler JO (2012) Experiment and
+  mathematical modeling of gene expression dynamics in a cell-free system.
+\newblock Integrative Biology 4: 494--501.
+\bibAnnoteFile{stogbauer2012experiment}
+
+\bibitem{piorino2023plasmid}
+Piorino F, Patterson AT, Han Y, Styczynski MP (2023) Plasmid crosstalk in
+  cell-free expression systems.
+\newblock ACS Synthetic Biology 12: 2843--2856.
+\bibAnnoteFile{piorino2023plasmid}
+
+\bibitem{han2025mathematical}
+Han Y, Patterson AT, Piorino F, Styczynski MP (2025) A mathematical model of
+  cell-free transcription-translation with plasmid crosstalk.
+\newblock Synthetic Biology 10: ysaf011.
+\bibAnnoteFile{han2025mathematical}
+
+\bibitem{yurchenko2024mechanism}
+Yurchenko A, Ozkul G, van Riel NAW, van Hest JCM, de~Greef TFA (2024)
+  Mechanism-based and data-driven modeling in cell-free synthetic biology.
+\newblock Chemical Communications 60: 6466--6475.
+\bibAnnoteFile{yurchenko2024mechanism}
+
+\bibitem{ganesh2024towards}
+Ganesh RB, Maerkl SJ (2024) Towards self-regeneration: exploring the limits of
+  protein synthesis in the {PURE} cell-free transcription-translation system.
+\newblock ACS Synthetic Biology 13: 2555--2566.
+\bibAnnoteFile{ganesh2024towards}
+
+\bibitem{adhikari2020effective}
+Adhikari A, Vilkhovoy M, Vadhin S, Lim HE, Varner JD (2020) Effective
+  biophysical modeling of cell free transcription and translation processes.
+\newblock Frontiers in bioengineering and biotechnology 8: 539081.
+\bibAnnoteFile{adhikari2020effective}
+
+\bibitem{Miwa1988}
+Miwa Y, Fujita Y (1988) {Purification and characterization of a repressor for
+  the Bacillus subtilis gnt operon.}
+\newblock The Journal of biological chemistry 263: 13252--7.
+\bibAnnoteFile{Miwa1988}
+
+\bibitem{Fujita1989}
+Fujita Y, Miwa Y (1989) {Identification of an operator sequence for the
+  Bacillus subtilis gnt operon.}
+\newblock The journal of biological chemistry 264: 4201--6.
+\bibAnnoteFile{Fujita1989}
+
+\bibitem{Peekhaus1998}
+Peekhaus N, Conway T (1998) {Positive and negative transcriptional regulation
+  of the Escherichia coli gluconate regulon gene gntT by GntR and the cyclic
+  AMP (cAMP)-cAMP receptor protein complex}.
+\newblock Journal of bacteriology 180: 1777--1785.
+\bibAnnoteFile{Peekhaus1998}
+
+\bibitem{Yoshida1995}
+Yoshida KI, Miwa Y, Ohmori H, Fujita Y (1995) {Analysis of an insertional
+  operator mutation (gntOi) that affects the expression level of theBacillus
+  subtilis gnt operon, and characterization ofgntOi suppressor mutations}.
+\newblock Molecular and general genetics MGG 248: 583--591.
+\bibAnnoteFile{Yoshida1995}
+
+\bibitem{daddaoua2017identification}
+Daddaoua A, Corral-Lugo A, Ramos JL, Krell T (2017) Identification of gntr as
+  regulator of the glucose metabolism in pseudomonas aeruginosa.
+\newblock Environmental microbiology 19: 3721--3733.
+\bibAnnoteFile{daddaoua2017identification}
+
+\bibitem{ramachandran2006gluconic}
+Ramachandran S, Fontanille P, Pandey A, Larroche C (2006) Gluconic acid:
+  properties, applications and microbial production.
+\newblock Food Technology and Biotechnology 44: 185--195.
+\bibAnnoteFile{ramachandran2006gluconic}
+
+\bibitem{shin2010efficient}
+Shin J, Noireaux V (2010) Efficient cell-free expression with the endogenous e.
+  coli rna polymerase and sigma factor 70.
+\newblock Journal of biological engineering 4: 1--9.
+\bibAnnoteFile{shin2010efficient}
+
+\bibitem{izu1997gene}
+Izu H, Adachi O, Yamada M (1997) Gene organization and transcriptional
+  regulation of the gntrku operon involved in gluconate uptake and catabolism
+  of escherichia coli.
+\newblock Journal of molecular biology 267: 778--793.
+\bibAnnoteFile{izu1997gene}
+
+\bibitem{mcclure_1980}
+McClure WR (1980) Rate-limiting steps in rna chain initiation.
+\newblock Proceedings of the National Academy of Sciences 77: 5634--5638.
+\bibAnnoteFile{mcclure_1980}
+
+\bibitem{Moon:2012aa}
+Moon TS, Lou C, Tamsir A, Stanton BC, Voigt CA (2012) Genetic programs
+  constructed from layered logic gates in single cells.
+\newblock Nature 491: 249-53.
+\bibAnnoteFile{Moon:2012aa}
+
+\bibitem{bintu2005transcriptional}
+Bintu L, Buchler NE, Garcia HG, Gerland U, Hwa T, et~al. (2005) Transcriptional
+  regulation by the numbers: models.
+\newblock Current opinion in genetics \& development 15: 116--124.
+\bibAnnoteFile{bintu2005transcriptional}
+
+\bibitem{rackauckas2017differentialequations}
+Rackauckas C, Nie Q (2017) Differentialequations.jl--a performant and
+  feature-rich ecosystem for solving differential equations in julia.
+\newblock Journal of Open Research Software 5.
+\bibAnnoteFile{rackauckas2017differentialequations}
+
+\bibitem{morris1991factorial}
+Morris MD (1991) Factorial sampling plans for preliminary computational
+  experiments.
+\newblock Technometrics 33: 161--174.
+\bibAnnoteFile{morris1991factorial}
+
+\bibitem{dixit2022globalsensitivity}
+Dixit VK, Rackauckas C (2022) Globalsensitivity. jl: Performant and parallel
+  global sensitivity analysis with julia.
+\newblock Journal of Open Source Software 7: 4561.
+\bibAnnoteFile{dixit2022globalsensitivity}
+
+\bibitem{Cuthbertson_2013}
+Cuthbertson L, Nodwell JR (2013) The tetr family of regulators.
+\newblock Microbiology and molecular biology reviews: MMBR 77: 440–75.
+\bibAnnoteFile{Cuthbertson_2013}
+
+\bibitem{Dimas_2019}
+Dimas RP, Jordan BR, Jiang XL, Martini C, Glavy JS, et~al. (2019) Engineering
+  dna recognition and allosteric response properties of tetr family proteins by
+  using a module-swapping strategy.
+\newblock Nucleic acids research 47: 8913–8925.
+\bibAnnoteFile{Dimas_2019}
+
+\bibitem{Suvorova_2015}
+Suvorova IA, Korostelev YD, Gelfand MS (2015) Gntr family of bacterial
+  transcription factors and their dna binding motifs: structure, positioning
+  and co-evolution.
+\newblock PloS one 10: e0132618.
+\bibAnnoteFile{Suvorova_2015}
+
+\bibitem{Cherney_2008}
+Cherney LT, Cherney MM, Garen CR, Lu GJ, James MNG (2008) Crystal structure of
+  the arginine repressor protein in complex with the dna operator from
+  mycobacterium tuberculosis.
+\newblock Journal of molecular biology 384: 1330–40.
+\bibAnnoteFile{Cherney_2008}
+
+\bibitem{lentini2013fluorescent}
+Lentini R, Forlin M, Martini L, Del~Bianco C, Spencer AC, et~al. (2013)
+  Fluorescent proteins and in vitro genetic organization for cell-free
+  synthetic biology.
+\newblock ACS synthetic biology 2: 482--489.
+\bibAnnoteFile{lentini2013fluorescent}
+
+\bibitem{niederholtmeyer2013real}
+Niederholtmeyer H, Xu L, Maerkl SJ (2013) Real-time mrna measurement during an
+  in vitro transcription and translation reaction using binary probes.
+\newblock ACS synthetic biology 2: 411--417.
+\bibAnnoteFile{niederholtmeyer2013real}
+
+\bibitem{Vilkhovoy:2019aa}
+Vilkhovoy M, Dai D, Vadhin S, Adhikari A, Varner JD (2019) Absolute
+  quantification of cell-free protein synthesis metabolism by reversed-phase
+  liquid chromatography-mass spectrometry.
+\newblock J Vis Exp .
+\bibAnnoteFile{Vilkhovoy:2019aa}
+
+\bibitem{garamella2016all}
+Garamella J, Marshall R, Rustad M, Noireaux V (2016) The all e. coli tx-tl
+  toolbox 2.0: a platform for cell-free synthetic biology.
+\newblock ACS synthetic biology 5: 344--355.
+\bibAnnoteFile{garamella2016all}
+
+\end{thebibliography}
