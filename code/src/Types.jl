@@ -100,6 +100,10 @@ struct ExperimentalData
     protein_venus_0mM_mean::Vector{Float64}  # μM
     protein_venus_0mM_std::Vector{Float64}   # μM
 
+    # Protein data (no-GntR control — unrepressed ceiling)
+    protein_venus_noGntR_mean::Vector{Float64}  # μM
+    protein_venus_noGntR_std::Vector{Float64}   # μM
+
     # Dose-response data (validation)
     dose_gluconate::Vector{Float64}      # mM
     dose_venus_mean::Vector{Float64}     # μM

@@ -174,12 +174,6 @@ Ganesh RB, Maerkl SJ (2024) Towards self-regeneration: exploring the limits of
 \newblock ACS Synthetic Biology 13: 2555--2566.
 \bibAnnoteFile{ganesh2024towards}
 
-\bibitem{adhikari2020effective}
-Adhikari A, Vilkhovoy M, Vadhin S, Lim HE, Varner JD (2020) Effective
-  biophysical modeling of cell free transcription and translation processes.
-\newblock Frontiers in bioengineering and biotechnology 8: 539081.
-\bibAnnoteFile{adhikari2020effective}
-
 \bibitem{Miwa1988}
 Miwa Y, Fujita Y (1988) {Purification and characterization of a repressor for
   the Bacillus subtilis gnt operon.}
@@ -230,6 +224,12 @@ Izu H, Adachi O, Yamada M (1997) Gene organization and transcriptional
   of escherichia coli.
 \newblock Journal of molecular biology 267: 778--793.
 \bibAnnoteFile{izu1997gene}
+
+\bibitem{adhikari2020effective}
+Adhikari A, Vilkhovoy M, Vadhin S, Lim HE, Varner JD (2020) Effective
+  biophysical modeling of cell free transcription and translation processes.
+\newblock Frontiers in bioengineering and biotechnology 8: 539081.
+\bibAnnoteFile{adhikari2020effective}
 
 \bibitem{mcclure_1980}
 McClure WR (1980) Rate-limiting steps in rna chain initiation.

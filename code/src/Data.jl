@@ -32,6 +32,8 @@ function load_experimental_data(data_dir::String = joinpath(@__DIR__, "..", "dat
     protein_venus_std = Float64.(prot_df[!, 6])     # StDev
     protein_venus_0mM_mean = Float64.(prot_df[!, 29])  # μM, 0 mM gluconate (full repression)
     protein_venus_0mM_std = Float64.(prot_df[!, 30])   # StDev
+    protein_venus_noGntR_mean = Float64.(prot_df[!, 32])  # μM, no GntR (unrepressed ceiling)
+    protein_venus_noGntR_std = Float64.(prot_df[!, 33])   # StDev
 
     # --- Dose-response data ---
     dose_df = CSV.read(joinpath(data_dir, "dose_response.csv"), DataFrame)
@@ -43,6 +45,7 @@ function load_experimental_data(data_dir::String = joinpath(@__DIR__, "..", "dat
         mRNA_time, mRNA_venus_mean, mRNA_venus_std, mRNA_gntr_mean, mRNA_gntr_std,
         protein_time, protein_venus_mean, protein_venus_std,
         protein_venus_0mM_mean, protein_venus_0mM_std,
+        protein_venus_noGntR_mean, protein_venus_noGntR_std,
         dose_gluconate, dose_venus_mean, dose_venus_std,
     )
 end

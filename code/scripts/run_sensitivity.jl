@@ -1,6 +1,6 @@
 # run_sensitivity.jl - Morris global sensitivity analysis
 #
-# Usage: julia --project=code scripts/run_sensitivity.jl
+# Usage: julia -t 15 --project=code code/scripts/run_sensitivity.jl
 
 using Pkg
 Pkg.activate(joinpath(@__DIR__, ".."))
@@ -17,10 +17,9 @@ const RESULTS_DIR = joinpath(@__DIR__, "..", "results")
 # --- Setup ---
 bio = load_biophysical_constants(joinpath(@__DIR__, "..", "src", "CellFree.json"))
 genes = build_gene_info()
-gluconate_conc = 10.0  # training condition
+gluconate_conc = 10.0
 
 # --- Model performance function ---
-# Returns a vector of 4 outputs: [Venus_mRNA_12h, Venus_protein_12h, GntR_mRNA_6h, GntR_protein_12h]
 function model_performance(pvec::Vector{Float64})
     params = vector_to_parameters(pvec)
     sol = try
@@ -34,22 +33,14 @@ function model_performance(pvec::Vector{Float64})
     end
 
     return [
-        sol(6.0)[5],   # Venus mRNA at 6h (near peak)
+        sol(6.0)[5],   # Venus mRNA at 6h
         sol(12.0)[8],  # Venus protein at 12h
-        sol(6.0)[4],   # GntR mRNA at 6h (near peak)
+        sol(6.0)[4],   # GntR mRNA at 6h
         sol(12.0)[7],  # GntR protein at 12h
     ]
 end
 
-# --- Morris sensitivity analysis ---
-println("Running Morris sensitivity analysis ($(N_PARAMETERS) parameters, 4 outputs)...")
-println("Parameter bounds:")
-for i in 1:N_PARAMETERS
-    println("  $(rpad(PARAMETER_NAMES[i], 22)) [$(PARAMETER_LOWER[i]), $(PARAMETER_UPPER[i])]")
-end
-
-# Use ensemble-derived bounds for Morris sampling (mean ± 3*std, clamped to original bounds)
-# This ensures Morris samples from the region where the model is well-behaved
+# --- Ensemble-derived bounds ---
 PC = readdlm(joinpath(RESULTS_DIR, "PC_final.dat"))
 ensemble_bounds = Vector{Vector{Float64}}()
 for i in 1:N_PARAMETERS
@@ -65,36 +56,29 @@ for i in 1:N_PARAMETERS
     push!(ensemble_bounds, [lo, hi])
 end
 
-# Morris method settings
-n_trajectories = 200  # number of Morris trajectories
+# --- Morris sensitivity analysis ---
+n_trajectories = 200
+println("Running Morris sensitivity analysis ($(N_PARAMETERS) params, 4 outputs, $(n_trajectories) trajectories)...")
 
-# GlobalSensitivity.jl Morris calls f(x::Vector) -> Vector per sample
-morris_result = gsa(model_performance, Morris(num_trajectory = n_trajectories),
-                    ensemble_bounds)
-
-# --- Extract results ---
-output_names = ["Venus_mRNA_6h", "Venus_protein_12h", "GntR_mRNA_6h", "GntR_protein_12h"]
-
-# Morris means (μ*) and variances (σ)
-# morris_result.means is n_params × n_outputs
-# morris_result.variances is n_params × n_outputs
-means = morris_result.means      # absolute mean elementary effects
-variances = morris_result.variances  # variance of elementary effects
+morris_result = gsa(model_performance, Morris(num_trajectory = n_trajectories), ensemble_bounds)
 
 # --- Save results ---
-writedlm(joinpath(RESULTS_DIR, "sensitivity_means.dat"), means)
-writedlm(joinpath(RESULTS_DIR, "sensitivity_variances.dat"), variances)
+# morris_result.means: 4 x 25 (outputs x params)
+# morris_result.variances: 4 x 25
+writedlm(joinpath(RESULTS_DIR, "sensitivity_means.dat"), morris_result.means)
+writedlm(joinpath(RESULTS_DIR, "sensitivity_variances.dat"), morris_result.variances)
 
-# --- Print summary ---
-println("\n--- Morris Sensitivity Results (|μ*|) ---")
+# --- Print top parameters per output ---
+output_names = ["Venus_mRNA_6h", "Venus_protein_12h", "GntR_mRNA_6h", "GntR_protein_12h"]
+means_t = collect(morris_result.means')  # 25 x 4
+
 for (j, oname) in enumerate(output_names)
-    println("\n$(oname):")
-    # Sort parameters by influence
-    sorted_idx = sortperm(abs.(means[:, j]), rev = true)
+    println("\n$(oname) (top 10):")
+    sorted = sortperm(abs.(means_t[:, j]), rev = true)
     for rank in 1:min(10, N_PARAMETERS)
-        i = sorted_idx[rank]
-        println("  $(rank). $(rpad(PARAMETER_NAMES[i], 22)) μ*=$(round(means[i,j], sigdigits=4))  σ=$(round(sqrt(abs(variances[i,j])), sigdigits=4))")
+        i = sorted[rank]
+        println("  $(rank). $(rpad(PARAMETER_NAMES[i], 22)) μ*=$(round(means_t[i,j], sigdigits=4))")
     end
 end
 
-println("\nDone. Sensitivity results saved to $(RESULTS_DIR)")
+println("\nDone. Sensitivity data saved to $(RESULTS_DIR)")

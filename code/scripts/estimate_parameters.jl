@@ -1,17 +1,14 @@
 # estimate_parameters.jl - MO/SO cycling parameter estimation
 #
-# Usage: julia -t 5 --project=code code/scripts/estimate_parameters.jl
+# Usage: julia -t 8 --project=code code/scripts/estimate_parameters.jl
 #
-# Strategy: Multi-objective (MO) explores Pareto front with 5 parallel chains,
-# then single-objective (SO) drills down on the worst-performing objective,
-# then reseed MO with the improved solution. Repeat.
-#
-# 5 objectives:
+# 6 objectives:
 #   1. Venus mRNA SSE (10 mM gluconate)
 #   2. Venus protein SSE (10 mM gluconate)
 #   3. GntR mRNA SSE (10 mM gluconate)
-#   4. Venus protein SSE (0 mM gluconate — full repression)
-#   5. GntR protein regularization (keep in [1, 20] μM range)
+#   4. Venus protein SSE (0 mM gluconate — full repression floor)
+#   5. GntR protein regularization (keep in [1, 20] μM)
+#   6. Venus protein SSE (no-GntR control — unrepressed ceiling)
 
 using Pkg
 Pkg.activate(joinpath(@__DIR__, ".."))
@@ -24,17 +21,17 @@ using DelimitedFiles
 using Random
 
 # --- Configuration ---
-const N_CYCLES = 15           # more cycles for 5 objectives
-const N_CHAINS = 5            # parallel chains for MO phase
-const MO_ITERATIONS = 50      # inner iterations per temperature for MO
-const SO_ITERATIONS = 30      # inner iterations for SO
+const N_CYCLES = 15
+const N_CHAINS = 5
+const MO_ITERATIONS = 50
+const SO_ITERATIONS = 30
 const RANK_CUTOFF = 4.0
-const PERTURB_MO = 0.10       # perturbation for MO chain seeding
-const PERTURB_RESEED = 0.05   # perturbation for SO→MO reseed
+const PERTURB_MO = 0.10
+const PERTURB_RESEED = 0.05
 const COOLING_RATE = 0.9
 const RESULTS_DIR = joinpath(@__DIR__, "..", "results")
-const N_OBJ = 5
-const OBJ_NAMES = ["Venus_mRNA", "Venus_protein", "GntR_mRNA", "Venus_prot_0mM", "GntR_prot_reg"]
+const N_OBJ = 6
+const OBJ_NAMES = ["Venus_mRNA", "Venus_protein", "GntR_mRNA", "Venus_prot_0mM", "GntR_prot_reg", "Venus_noGntR"]
 
 # --- Setup ---
 bio = load_biophysical_constants(joinpath(@__DIR__, "..", "src", "CellFree.json"))
@@ -47,28 +44,21 @@ function OF(pvec)
     return reshape(errs, :, 1)
 end
 
-# Single-objective wrapper (returns 1×1 Matrix)
 function OF_single(pvec, obj_idx)
     errs = evaluate_objectives(pvec, bio, genes, exp_data)
     return reshape([errs[obj_idx]], :, 1)
 end
 
-# Neighbor function: multiplicative perturbation with bounds enforcement
 function NF(pvec)
     new_pvec = pvec .* (1.0 .+ 0.05 .* randn(N_PARAMETERS))
     return clamp_to_bounds(new_pvec)
 end
 
-# Acceptance probability: Boltzmann on candidate rank
 accept_fn(rank_array, T) = exp(-rank_array[end] / T)
-
-# Cooling schedule
 cool_fn(T) = COOLING_RATE * T
 
 # --- Cycling loop ---
 κ_best = default_initial_guess()
-
-# Global archive
 ec_global = zeros(N_OBJ, 0)
 pc_global = zeros(N_PARAMETERS, 0)
 
@@ -82,7 +72,7 @@ for cycle in 1:N_CYCLES
     println("CYCLE $(cycle)/$(N_CYCLES)")
     println("="^60)
 
-    # ---- Phase 1: Multi-objective (5 parallel chains) ----
+    # ---- Phase 1: Multi-objective (parallel chains) ----
     println("\n--- MO Phase ($(N_CHAINS) chains, $(MO_ITERATIONS) iterations) ---")
     initial_states = [clamp_to_bounds(κ_best .* (1.0 .+ PERTURB_MO .* randn(N_PARAMETERS))) for _ in 1:N_CHAINS]
 
@@ -97,7 +87,6 @@ for cycle in 1:N_CYCLES
     println("  MO archive size: $(size(PC_mo, 2))")
     println("  MO Pareto front size: $(count(RA_mo .== 0))")
 
-    # Accumulate global archive
     ec_global = hcat(ec_global, EC_mo)
     pc_global = hcat(pc_global, PC_mo)
 
@@ -112,7 +101,6 @@ for cycle in 1:N_CYCLES
     println("  Worst objective: $(worst_obj) ($(OBJ_NAMES[worst_obj]))")
     println("  Mean errors on front: $(round.(mean_errors, digits=4))")
 
-    # Best MO solution (lowest total error)
     total_err = vec(sum(ec_global[:, front_idx], dims = 1))
     best_mo_global_idx = front_idx[argmin(total_err)]
     κ_seed = pc_global[:, best_mo_global_idx]
@@ -131,7 +119,6 @@ for cycle in 1:N_CYCLES
 
     println("  SO archive size: $(size(PC_so, 2))")
 
-    # Evaluate SO winner on all objectives for global archive
     best_so_idx = argmin(vec(EC_so))
     κ_so_best = PC_so[:, best_so_idx]
     full_err = evaluate_objectives(κ_so_best, bio, genes, exp_data)
@@ -140,10 +127,8 @@ for cycle in 1:N_CYCLES
     ec_global = hcat(ec_global, reshape(full_err, :, 1))
     pc_global = hcat(pc_global, reshape(κ_so_best, :, 1))
 
-    # ---- Reseed for next cycle ----
     κ_best = clamp_to_bounds(κ_so_best .* (1.0 .+ PERTURB_RESEED .* randn(N_PARAMETERS)))
 
-    # ---- Save intermediate results ----
     writedlm(joinpath(RESULTS_DIR, "EC_cycle$(cycle).dat"), ec_global)
     writedlm(joinpath(RESULTS_DIR, "PC_cycle$(cycle).dat"), pc_global)
     println("  Saved cycle $(cycle) results (global archive: $(size(pc_global, 2)) solutions)")
@@ -159,41 +144,16 @@ ensemble_idx = findall(final_ranks .<= 1)
 println("Solutions with rank ≤ 1: $(length(ensemble_idx))")
 println("Pareto-optimal (rank 0): $(count(final_ranks .== 0))")
 
-# Save final ensemble
 writedlm(joinpath(RESULTS_DIR, "EC_final.dat"), ec_global[:, ensemble_idx])
 writedlm(joinpath(RESULTS_DIR, "PC_final.dat"), pc_global[:, ensemble_idx])
 writedlm(joinpath(RESULTS_DIR, "RA_final.dat"), final_ranks[ensemble_idx])
 
-# --- Ensemble diagnostics ---
 println("\nEnsemble parameter statistics:")
 for (i, name) in enumerate(PARAMETER_NAMES)
     vals = pc_global[i, ensemble_idx]
-    μ = mean(vals)
-    σ = std(vals)
-    cv = σ / abs(μ + eps()) * 100
+    μ = mean(vals); σ = std(vals)
+    cv = σ / (abs(μ) + eps()) * 100
     println("  $(rpad(name, 22)) mean=$(rpad(round(μ, sigdigits=4), 12)) std=$(rpad(round(σ, sigdigits=4), 12)) CV=$(round(cv, digits=1))%")
-end
-
-# Check GntR protein consistency across ensemble
-println("\nGntR protein at 12h across ensemble:")
-gntr_vals = Float64[]
-for k in 1:length(ensemble_idx)
-    pvec = pc_global[:, ensemble_idx[k]]
-    params = vector_to_parameters(pvec)
-    sol = try
-        simulate(params, bio, genes, 10.0)
-    catch
-        continue
-    end
-    if sol.t[end] >= 11.5
-        push!(gntr_vals, sol(12.0)[7])
-    end
-end
-if !isempty(gntr_vals)
-    μ_gntr = mean(gntr_vals)
-    σ_gntr = std(gntr_vals)
-    cv_gntr = σ_gntr / (μ_gntr + eps()) * 100
-    println("  mean=$(round(μ_gntr, sigdigits=4)) μM, std=$(round(σ_gntr, sigdigits=4)) μM, CV=$(round(cv_gntr, digits=1))%")
 end
 
 println("\nDone. Results saved to $(RESULTS_DIR)")
