@@ -7,7 +7,7 @@
 #   2. Venus protein SSE (10 mM gluconate)
 #   3. GntR mRNA SSE (10 mM gluconate)
 #   4. Venus protein SSE (0 mM gluconate — full repression floor)
-#   5. GntR protein regularization (keep in [1, 20] μM)
+#   5. GntR protein regularization (keep in [5, 15] μM)
 #   6. Venus protein SSE (no-GntR control — unrepressed ceiling)
 
 using Pkg

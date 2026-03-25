@@ -79,12 +79,24 @@ function transcription_control(x::AbstractVector, params::ModelParameters, gluco
 end
 
 """
-    machinery_allocation(x, params, bio, genes) → (R_X_free, R_L_free, f_X, f_L)
+    machinery_allocation(x, params, bio, genes) → (R_X_free, R_L_free, tau_X, tau_L)
 
-Compute free machinery concentrations and allocation fractions.
+Compute free machinery concentrations from the exact multi-gene RNAP/ribosome balance.
 
-Layer 2 of the resource model: RNAP and ribosomes are shared across genes/mRNAs.
-R_X_free is constant (genes are constant); R_L_free is dynamic (mRNA changes).
+Derived from the 4-step transcription mechanism (McClure 1980, Adhikari et al. 2020):
+  G_j + R_X ⇌ (G_j:R_X)_C → (G_j:R_X)_O → m_j + R_X + G_j
+
+At steady state, the total RNAP balance gives:
+  R_X,T = R_X [1 + Σ_j (1 + τ_j⁻¹) G_j / K_X]
+
+Solving for free RNAP:
+  R_X = R_X,T K_X / [K_X + Σ_j (τ_j + 1)/τ_j · G_j]
+
+The transcription rate for gene j is then:
+  r_X,j = k_{E,j} · R_X,T · G_j / {τ_j · [K_X + Σ_i (τ_i + 1)/τ_i · G_i]}
+
+An analogous derivation holds for translation with ribosome replacing RNAP
+and mRNA replacing gene concentration.
 """
 function machinery_allocation(x::AbstractVector, params::ModelParameters,
                                bio::BiophysicalConstants, genes::GeneInfo)
@@ -94,59 +106,79 @@ function machinery_allocation(x::AbstractVector, params::ModelParameters,
     KX = bio.KX
     KL = params.KL  # estimated parameter, not the default from bio
 
-    # Transcription allocation fractions (constant since genes are constant)
-    # tau_X_j = (kE/kI) * time_constant_modifier
-    # f_X_j = G_j / (tau_j * KX + (1 + tau_j) * G_j)
-    tau_mRNA = [params.tau_mRNA_GntR, params.tau_mRNA_Venus, 1.0]  # sigma_70 tau fixed at 1
-    f_X = zeros(N_GENES)
+    # Compute tau values for transcription
+    tau_mRNA = [params.tau_mRNA_GntR, params.tau_mRNA_Venus, 1.0]
+    tau_X = zeros(N_GENES)
     for j in 1:N_GENES
         kE = v_X / genes.coding_length_nt[j]
         kI = 1.0 / bio.characteristic_initiation_time_transcription
-        tau_j = (kE / kI) * tau_mRNA[j]
-        G_j = x[j]  # gene concentration
-        f_X[j] = G_j / (tau_j * KX + (1.0 + tau_j) * G_j + eps())
+        tau_X[j] = (kE / kI) * tau_mRNA[j]
     end
 
-    # Translation allocation fractions (dynamic — depends on mRNA levels)
+    # Compute tau values for translation
     tau_protein = [params.tau_protein_GntR, params.tau_protein_Venus, 1.0]
-    f_L = zeros(N_GENES)
+    tau_L = zeros(N_GENES)
     for j in 1:N_GENES
         kE = v_L / genes.protein_length_aa[j]
         kI = 1.0 / bio.characteristic_initiation_time_translation
-        tau_j = (kE / kI) * tau_protein[j]
-        m_j = x[3 + j]  # mRNA concentration
-        f_L[j] = m_j / (tau_j * KL + (1.0 + tau_j) * m_j + eps())
+        tau_L[j] = (kE / kI) * tau_protein[j]
     end
 
-    # Free machinery (closed-form competitive allocation)
-    R_X_free = bio.RNAP_concentration / (1.0 + sum(f_X))
-    R_L_free = bio.ribosome_concentration / (1.0 + sum(f_L))
+    # Free RNAP: R_X = R_{X,T} K_X / D_X where D_X = K_X + Σ_j (τ_j+1)/τ_j · G_j
+    D_X = KX
+    for j in 1:N_GENES
+        G_j = x[j]
+        if G_j > 0
+            D_X += (tau_X[j] + 1.0) / (tau_X[j] + eps()) * G_j
+        end
+    end
+    R_X_free = bio.RNAP_concentration * KX / D_X
 
-    return R_X_free, R_L_free, f_X, f_L
+    # Free ribosome: R_L = R_{L,T} K_L / D_L where D_L = K_L + Σ_j (τ_j+1)/τ_j · m_j
+    D_L = KL
+    for j in 1:N_GENES
+        m_j = x[3 + j]
+        if m_j > 0
+            D_L += (tau_L[j] + 1.0) / (tau_L[j] + eps()) * m_j
+        end
+    end
+    R_L_free = bio.ribosome_concentration * KL / D_L
+
+    return R_X_free, R_L_free, tau_X, tau_L
 end
 
 """
-    kinetic_rates(f_X, f_L, R_X_free, R_L_free, bio, genes) → (r_X, r_L)
+    kinetic_rates(x, tau_X, tau_L, R_X_free, R_L_free, bio, genes) → (r_X, r_L)
 
-Compute transcription and translation kinetic rates for each gene.
-Units: μM/hr
+Compute transcription and translation kinetic rates for each gene using the exact
+multi-gene expressions derived from the 4-step mechanism.
+
+  r_{X,j} = k_{E,j} · R_X · G_j / (τ_j · K_X)    [μM/hr]
+  r_{L,j} = k_{E,j} · R_L · m_j / (τ_j · K_L)    [μM/hr]
+
+where R_X and R_L are the free machinery concentrations that already account
+for multi-gene competition through the shared denominator.
 """
-function kinetic_rates(f_X::Vector{Float64}, f_L::Vector{Float64},
+function kinetic_rates(x::AbstractVector, tau_X::Vector{Float64}, tau_L::Vector{Float64},
                        R_X_free::Float64, R_L_free::Float64,
-                       bio::BiophysicalConstants, genes::GeneInfo)
+                       bio::BiophysicalConstants, genes::GeneInfo,
+                       params::ModelParameters)
+
+    KX = bio.KX
+    KL = params.KL
 
     r_X = zeros(N_GENES)
     r_L = zeros(N_GENES)
 
     for j in 1:N_GENES
-        # Transcription rate: r_X_j = R_X_free * (v_X / l_G_j) * f_X_j
-        kE_X = bio.transcription_elongation_rate / genes.coding_length_nt[j]
-        r_X[j] = R_X_free * kE_X * f_X[j] * 3600.0  # convert 1/s → 1/hr, result: μM/hr
+        G_j = x[j]
+        m_j = x[3 + j]
 
-        # Translation rate: r_L_j = R_L_free * K_P * (v_L / l_P_j) * f_L_j
-        # K_P is a polysome factor (set to 1.0 for now, consistent with old code)
+        kE_X = bio.transcription_elongation_rate / genes.coding_length_nt[j]
+        r_X[j] = kE_X * R_X_free * G_j / (tau_X[j] * KX + eps()) * 3600.0
+
         kE_L = bio.translation_elongation_rate / genes.protein_length_aa[j]
-        r_L[j] = R_L_free * kE_L * f_L[j] * 3600.0  # μM/hr
+        r_L[j] = kE_L * R_L_free * m_j / (tau_L[j] * KL + eps()) * 3600.0
     end
 
     return r_X, r_L
@@ -168,8 +200,8 @@ function balances!(dx::AbstractVector, x::AbstractVector, p::Tuple, t::Float64)
     u_bar = transcription_control(x, params, gluconate_conc)
 
     # --- Machinery allocation and kinetic rates ---
-    R_X_free, R_L_free, f_X, f_L = machinery_allocation(x, params, bio, genes)
-    r_X, r_L = kinetic_rates(f_X, f_L, R_X_free, R_L_free, bio, genes)
+    R_X_free, R_L_free, tau_X, tau_L = machinery_allocation(x, params, bio, genes)
+    r_X, r_L = kinetic_rates(x, tau_X, tau_L, R_X_free, R_L_free, bio, genes, params)
 
     # --- Resource fractions ---
     epsilon_X = max(x[IDX_EPSILON_X], 0.0)

@@ -8,7 +8,7 @@ Evaluate the 6 training objectives:
   2. Venus protein SSE at 10 mM gluconate (dense time course)
   3. GntR mRNA SSE at 10 mM gluconate (5 time points)
   4. Venus protein SSE at 0 mM gluconate — full repression (dense time course)
-  5. GntR protein regularization — penalizes if outside [1, 20] μM
+  5. GntR protein regularization — penalizes if outside [5, 15] μM
   6. Venus protein SSE for no-GntR control — unrepressed ceiling (dense time course)
 
 Returns a vector of 6 error values. Returns fill(1e12, 6) if simulation fails.
@@ -97,10 +97,10 @@ function evaluate_objectives(pvec::Vector{Float64}, bio::BiophysicalConstants,
     # --- Objective 5: GntR protein regularization ---
     gntr_protein_12h = sol_10(12.0)[7]
     err_gntr_reg = 0.0
-    if gntr_protein_12h < 1.0
-        err_gntr_reg = (gntr_protein_12h - 1.0)^2
-    elseif gntr_protein_12h > 20.0
-        err_gntr_reg = (gntr_protein_12h - 20.0)^2
+    if gntr_protein_12h < 5.0
+        err_gntr_reg = (gntr_protein_12h - 5.0)^2
+    elseif gntr_protein_12h > 15.0
+        err_gntr_reg = (gntr_protein_12h - 15.0)^2
     end
 
     # --- Objective 6: Venus protein SSE (no-GntR — unrepressed ceiling) ---

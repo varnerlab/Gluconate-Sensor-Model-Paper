@@ -253,4 +253,44 @@ else
     println("SKIP fig_sensitivity (run run_sensitivity.jl first)")
 end
 
+# ==========================================================================
+# Figure 7: Synthetic fed-batch supplementation sweep
+# Data from: run_fedbatch_sweep.jl
+# ==========================================================================
+if isfile(joinpath(RESULTS_DIR, "fedbatch_sweep_fracs.dat"))
+    fracs = vec(readdlm(joinpath(RESULTS_DIR, "fedbatch_sweep_fracs.dat")))
+    sweep_eX = readdlm(joinpath(RESULTS_DIR, "fedbatch_sweep_eX.dat"))  # [mean std]
+    sweep_eL = readdlm(joinpath(RESULTS_DIR, "fedbatch_sweep_eL.dat"))
+
+    fig = Figure(size = (550, 450), fontsize = 14, figure_padding = 20)
+    ax = Axis(fig[1, 1],
+              xlabel = "Supplementation fraction",
+              ylabel = "[Venus] at 12 hr (μM)")
+
+    # ε_X boost band and line
+    band!(ax, fracs,
+          sweep_eX[:, 1] .- 1.96 .* sweep_eX[:, 2],
+          sweep_eX[:, 1] .+ 1.96 .* sweep_eX[:, 2],
+          color = (:lightblue, 0.4))
+    lines!(ax, fracs, sweep_eX[:, 1], color = :black, linewidth = LINE_WIDTH,
+           label = "TX resource (εX) supplementation")
+
+    # ε_L boost band and line
+    band!(ax, fracs,
+          sweep_eL[:, 1] .- 1.96 .* sweep_eL[:, 2],
+          sweep_eL[:, 1] .+ 1.96 .* sweep_eL[:, 2],
+          color = (:lightsalmon, 0.4))
+    lines!(ax, fracs, sweep_eL[:, 1], color = :black, linewidth = LINE_WIDTH,
+           linestyle = :dash, label = "TL resource (εL) supplementation")
+
+    axislegend(ax, position = :lt, framevisible = false, labelsize = 11)
+    ylims!(ax, 1.2, 3.0)
+
+    save(joinpath(FIGURES_DIR, "fig_fedbatch_sweep.pdf"), fig)
+    save(joinpath(PAPER_FIGS_DIR, "fig_fedbatch_sweep.pdf"), fig)
+    println("Saved: fig_fedbatch_sweep.pdf")
+else
+    println("SKIP fig_fedbatch_sweep (run run_fedbatch_sweep.jl first)")
+end
+
 println("\nAll figures saved to $(FIGURES_DIR) and $(PAPER_FIGS_DIR)")

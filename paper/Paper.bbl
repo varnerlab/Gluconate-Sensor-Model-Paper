@@ -266,6 +266,13 @@ Dixit VK, Rackauckas C (2022) Globalsensitivity. jl: Performant and parallel
 \newblock Journal of Open Source Software 7: 4561.
 \bibAnnoteFile{dixit2022globalsensitivity}
 
+\bibitem{li2017dissecting}
+Li J, Zhang C, Huang P, Kuru E, Forster-Benson ETC, et~al. (2017) Dissecting
+  limiting factors of the {Protein synthesis Using Recombinant Elements (PURE)}
+  system.
+\newblock Translation 5: e1327006.
+\bibAnnoteFile{li2017dissecting}
+
 \bibitem{Cuthbertson_2013}
 Cuthbertson L, Nodwell JR (2013) The tetr family of regulators.
 \newblock Microbiology and molecular biology reviews: MMBR 77: 440–75.
@@ -304,6 +311,12 @@ Niederholtmeyer H, Xu L, Maerkl SJ (2013) Real-time mrna measurement during an
   in vitro transcription and translation reaction using binary probes.
 \newblock ACS synthetic biology 2: 411--417.
 \bibAnnoteFile{niederholtmeyer2013real}
+
+\bibitem{jurado2023chemical}
+Jurado Z, Pandey A, Murray RM (2023) A chemical reaction network model of
+  {PURE}.
+\newblock bioRxiv .
+\bibAnnoteFile{jurado2023chemical}
 
 \bibitem{Vilkhovoy:2019aa}
 Vilkhovoy M, Dai D, Vadhin S, Adhikari A, Varner JD (2019) Absolute

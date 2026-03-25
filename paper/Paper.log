@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 MAR 2026 09:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 MAR 2026 14:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Paper
+**Paper.tex
 (./Paper.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -467,7 +467,7 @@ File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 [13]
 
 [14]
-Overfull \hbox (1.39542pt too wide) in paragraph at lines 213--214
+Overfull \hbox (1.39542pt too wide) in paragraph at lines 216--217
  \OT1/phv/b/n/12 Cir-cuit ar-chi-tec-ture and com-po-nents. \OT1/phv/m/n/12 The
  ge-netic cir-cuit was com-posed of two genes,
  []
@@ -486,145 +486,153 @@ Overfull \hbox (1.39542pt too wide) in paragraph at lines 213--214
 
 [19]
 
-[20
+[20]
+
+[21
 
 ]
 
-[21]
-
 [22]
-Overfull \hbox (5.52107pt too wide) in paragraph at lines 246--247
+
+[23]
+
+[24]
+Overfull \hbox (5.52107pt too wide) in paragraph at lines 252--253
 []\OT1/phv/m/n/12 The multi-objective/single-objective cy-cling strat-egy im-pl
 e-mented in Pare-toEnsem-bles.jl
  []
 
 
 
-[23]
-
-[24]
-
 [25]
 
-[26
+[26]
+
+[27
 
 ]
 
-[27] (./Paper.bbl
+[28] (./Paper.bbl
 
-[28
+[29
 
 ]
-
-[29]
 
 [30]
 
-[31])
+[31]
 
 [32]
-<./figs/fig-0-circuit.pdf, id=119, 219.82124pt x 149.55875pt>
+
+[33])
+
+[34]
+<./figs/fig-0-circuit.pdf, id=125, 219.82124pt x 149.55875pt>
 File: ./figs/fig-0-circuit.pdf Graphic file (type pdf)
 <use ./figs/fig-0-circuit.pdf>
-Package pdftex.def Info: ./figs/fig-0-circuit.pdf  used on input line 278.
+Package pdftex.def Info: ./figs/fig-0-circuit.pdf  used on input line 284.
 (pdftex.def)             Requested size: 211.38832pt x 143.82579pt.
-
-
-[33
-
- <./figs/fig-0-circuit.pdf>]
-<./figs/fig-1-three-panel.pdf, id=144, 369.38pt x 903.375pt>
-File: ./figs/fig-1-three-panel.pdf Graphic file (type pdf)
-<use ./figs/fig-1-three-panel.pdf>
-Package pdftex.def Info: ./figs/fig-1-three-panel.pdf  used on input line 287.
-(pdftex.def)             Requested size: 211.38832pt x 516.98297pt.
-
-
-LaTeX Warning: Float too large for page by 3.55296pt on input line 294.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-[34 <./figs/fig-1-three-panel.pdf>]
-<./figs/fig_model_training.pdf, id=161, 677.53125pt x 526.96875pt>
-File: ./figs/fig_model_training.pdf Graphic file (type pdf)
-<use ./figs/fig_model_training.pdf>
-Package pdftex.def Info: ./figs/fig_model_training.pdf  used on input line 300.
-
-(pdftex.def)             Requested size: 469.75502pt x 365.37782pt.
 
 
 [35
 
-
- <./figs/fig_model_training.pdf>]
-<./figs/fig_resource_depletion.pdf, id=189, 376.40625pt x 301.125pt>
-File: ./figs/fig_resource_depletion.pdf Graphic file (type pdf)
-<use ./figs/fig_resource_depletion.pdf>
-Package pdftex.def Info: ./figs/fig_resource_depletion.pdf  used on input line 
-314.
-(pdftex.def)             Requested size: 281.85587pt x 225.49857pt.
+ <./figs/fig-0-circuit.pdf>]
+<./figs/fig-1-three-panel.pdf, id=150, 369.38pt x 903.375pt>
+File: ./figs/fig-1-three-panel.pdf Graphic file (type pdf)
+<use ./figs/fig-1-three-panel.pdf>
+Package pdftex.def Info: ./figs/fig-1-three-panel.pdf  used on input line 293.
+(pdftex.def)             Requested size: 211.38832pt x 516.98297pt.
 
 
-[36
-
- <./figs/fig_resource_depletion.pdf>]
-<./figs/fig_dose_response.pdf, id=210, 413.545pt x 339.2675pt>
-File: ./figs/fig_dose_response.pdf Graphic file (type pdf)
-<use ./figs/fig_dose_response.pdf>
-Package pdftex.def Info: ./figs/fig_dose_response.pdf  used on input line 323.
-(pdftex.def)             Requested size: 281.85587pt x 231.23723pt.
-
-
-[37
-
- <./figs/fig_dose_response.pdf>]
-<./figs/fig_sensitivity.pdf, id=229, 376.40625pt x 677.53125pt>
-File: ./figs/fig_sensitivity.pdf Graphic file (type pdf)
-<use ./figs/fig_sensitivity.pdf>
-Package pdftex.def Info: ./figs/fig_sensitivity.pdf  used on input line 333.
-(pdftex.def)             Requested size: 375.80544pt x 676.49576pt.
-
-
-LaTeX Warning: Float too large for page by 163.06575pt on input line 336.
+LaTeX Warning: Float too large for page by 3.55296pt on input line 300.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[38 <./figs/fig_sensitivity.pdf>]
-<./figs/fig_correlation_heatmap.pdf, id=261, 602.25pt x 526.96875pt>
-File: ./figs/fig_correlation_heatmap.pdf Graphic file (type pdf)
-<use ./figs/fig_correlation_heatmap.pdf>
-Package pdftex.def Info: ./figs/fig_correlation_heatmap.pdf  used on input line
- 342.
-(pdftex.def)             Requested size: 375.80544pt x 328.84003pt.
+[36 <./figs/fig-1-three-panel.pdf>]
+<./figs/fig_model_training.pdf, id=168, 677.53125pt x 526.96875pt>
+File: ./figs/fig_model_training.pdf Graphic file (type pdf)
+<use ./figs/fig_model_training.pdf>
+Package pdftex.def Info: ./figs/fig_model_training.pdf  used on input line 306.
+
+(pdftex.def)             Requested size: 469.75502pt x 365.37782pt.
+
+
+[37
+
+
+ <./figs/fig_model_training.pdf>]
+<./figs/fig_resource_depletion.pdf, id=196, 376.40625pt x 301.125pt>
+File: ./figs/fig_resource_depletion.pdf Graphic file (type pdf)
+<use ./figs/fig_resource_depletion.pdf>
+Package pdftex.def Info: ./figs/fig_resource_depletion.pdf  used on input line 
+320.
+(pdftex.def)             Requested size: 281.85587pt x 225.49857pt.
+
+
+[38
+
+ <./figs/fig_resource_depletion.pdf>]
+<./figs/fig_dose_response.pdf, id=216, 413.545pt x 339.2675pt>
+File: ./figs/fig_dose_response.pdf Graphic file (type pdf)
+<use ./figs/fig_dose_response.pdf>
+Package pdftex.def Info: ./figs/fig_dose_response.pdf  used on input line 329.
+(pdftex.def)             Requested size: 281.85587pt x 231.23723pt.
 
 
 [39
 
-
- <./figs/fig_correlation_heatmap.pdf>]
+ <./figs/fig_dose_response.pdf>]
 
 [40
 
 ]
-<./figs/fig-S1-resource_limitation_Pseudomonas.pdf, id=292, 361.35pt x 289.08pt
+<./figs/fig_sensitivity.pdf, id=240, 376.40625pt x 677.53125pt>
+File: ./figs/fig_sensitivity.pdf Graphic file (type pdf)
+<use ./figs/fig_sensitivity.pdf>
+Package pdftex.def Info: ./figs/fig_sensitivity.pdf  used on input line 359.
+(pdftex.def)             Requested size: 375.80544pt x 676.49576pt.
+
+
+LaTeX Warning: Float too large for page by 163.06575pt on input line 362.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[41 <./figs/fig_sensitivity.pdf>]
+<./figs/fig_correlation_heatmap.pdf, id=271, 602.25pt x 526.96875pt>
+File: ./figs/fig_correlation_heatmap.pdf Graphic file (type pdf)
+<use ./figs/fig_correlation_heatmap.pdf>
+Package pdftex.def Info: ./figs/fig_correlation_heatmap.pdf  used on input line
+ 368.
+(pdftex.def)             Requested size: 375.80544pt x 328.84003pt.
+
+
+[42
+
+
+ <./figs/fig_correlation_heatmap.pdf>]
+
+[43
+
+]
+<./figs/fig-S1-resource_limitation_Pseudomonas.pdf, id=303, 361.35pt x 289.08pt
 >
 File: ./figs/fig-S1-resource_limitation_Pseudomonas.pdf Graphic file (type pdf)
 
 <use ./figs/fig-S1-resource_limitation_Pseudomonas.pdf>
 Package pdftex.def Info: ./figs/fig-S1-resource_limitation_Pseudomonas.pdf  use
-d on input line 415.
+d on input line 441.
 (pdftex.def)             Requested size: 281.85587pt x 225.48589pt.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 417.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 443.
 
 
-[41
+[44
 
  <./figs/fig-S1-resource_limitation_Pseudomonas.pdf>] (./Paper.aux)
  ***********
@@ -633,13 +641,13 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6530 strings out of 473190
- 106971 string characters out of 5715801
- 514686 words of memory out of 5000000
- 29681 multiletter control sequences out of 15000+600000
+ 6541 strings out of 473190
+ 107229 string characters out of 5715801
+ 514740 words of memory out of 5000000
+ 29692 multiletter control sequences out of 15000+600000
  588991 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,15n,65p,2455b,447s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,15n,65p,3048b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -649,18 +657,19 @@ sr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
 ocal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
 al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
 /texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
-2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
-25/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/202
-5/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf
--dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/f
-onts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Paper.pdf (42 pages, 703531 bytes).
+xlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
+2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/202
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025/t
+exmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-di
+st/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/font
+s/type1/urw/helvetic/uhvro8a.pfb>
+Output written on Paper.pdf (45 pages, 719502 bytes).
 PDF statistics:
- 417 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
+ 432 PDF objects out of 1000 (max. 8388607)
+ 261 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
