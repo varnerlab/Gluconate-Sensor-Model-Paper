@@ -1,18 +1,1 @@
 [Run 2] Starting (15 cycles, 8 chains, 7 threads)
-[Run 2] Cycle 1/15: archive=7832, front=1184, worst=GntR_prot_reg, 166.0s (2.8 min total)
-[Run 2] Cycle 2/15: archive=15598, front=2538, worst=GntR_prot_reg, 169.5s (5.6 min total)
-[Run 2] Cycle 3/15: archive=23369, front=3051, worst=GntR_prot_reg, 206.0s (9.0 min total)
-[Run 2] Cycle 4/15: archive=31370, front=3832, worst=GntR_prot_reg, 211.1s (12.5 min total)
-[Run 2] Cycle 5/15: archive=38918, front=4419, worst=GntR_prot_reg, 190.8s (15.7 min total)
-[Run 2] Cycle 6/15: archive=46558, front=4690, worst=GntR_prot_reg, 178.9s (18.7 min total)
-[Run 2] Cycle 7/15: archive=54559, front=4799, worst=GntR_prot_reg, 210.1s (22.2 min total)
-[Run 2] Cycle 8/15: archive=62445, front=5069, worst=GntR_prot_reg, 202.1s (25.6 min total)
-[Run 2] Cycle 9/15: archive=70446, front=5287, worst=GntR_prot_reg, 206.0s (29.0 min total)
-[Run 2] Cycle 10/15: archive=78447, front=5635, worst=GntR_prot_reg, 195.3s (32.3 min total)
-[Run 2] Cycle 11/15: archive=86448, front=5706, worst=GntR_prot_reg, 201.4s (35.7 min total)
-[Run 2] Cycle 12/15: archive=94449, front=5705, worst=GntR_prot_reg, 196.2s (38.9 min total)
-[Run 2] Cycle 13/15: archive=102345, front=5675, worst=GntR_prot_reg, 180.5s (42.0 min total)
-[Run 2] Cycle 14/15: archive=110346, front=5733, worst=GntR_prot_reg, 206.8s (45.4 min total)
-[Run 2] Cycle 15/15: archive=118347, front=6013, worst=GntR_prot_reg, 221.2s (49.1 min total)
-[Run 2] Done in 49.6 min. Ensemble: 8672, total archive: 118347
-  Activating project at `~/Desktop/papers/Gluconate-Sensor-Model-Paper/code`

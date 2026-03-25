@@ -95,12 +95,16 @@ function evaluate_objectives(pvec::Vector{Float64}, bio::BiophysicalConstants,
     end
 
     # --- Objective 5: GntR protein regularization ---
+    # Soft quadratic centered at 10 μM with hard walls at [5, 15].
+    # Weight λ chosen so penalty ≈ 1 at the walls (same scale as SSE objectives).
     gntr_protein_12h = sol_10(12.0)[7]
-    err_gntr_reg = 0.0
+    gntr_target = 10.0  # μM
+    λ_gntr = 0.04       # (gntr - 10)^2 * 0.04 = 1.0 at gntr = 5 or 15
+    err_gntr_reg = λ_gntr * (gntr_protein_12h - gntr_target)^2
     if gntr_protein_12h < 5.0
-        err_gntr_reg = (gntr_protein_12h - 5.0)^2
+        err_gntr_reg += (gntr_protein_12h - 5.0)^2
     elseif gntr_protein_12h > 15.0
-        err_gntr_reg = (gntr_protein_12h - 15.0)^2
+        err_gntr_reg += (gntr_protein_12h - 15.0)^2
     end
 
     # --- Objective 6: Venus protein SSE (no-GntR — unrepressed ceiling) ---
