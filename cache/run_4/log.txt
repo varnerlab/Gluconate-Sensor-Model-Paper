@@ -1,0 +1,132 @@
+[Run 4] Starting (15 cycles, 8 chains, 7 threads)
+[Run 4] Cycle 1/15: archive=8001, front=2723, worst=GntR_prot_reg, 93.0s (1.5 min total)
+[Run 4] Cycle 2/15: archive=16002, front=4262, worst=GntR_prot_reg, 122.4s (3.6 min total)
+[Run 4] Cycle 3/15: archive=24003, front=2597, worst=GntR_prot_reg, 120.5s (5.6 min total)
+[Run 4] Cycle 4/15: archive=32004, front=3687, worst=GntR_prot_reg, 107.2s (7.4 min total)
+[Run 4] Cycle 5/15: archive=40005, front=4060, worst=GntR_prot_reg, 158.1s (10.0 min total)
+
+[44714] signal 15: Terminated: 15
+in expression starting at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/scripts/estimate_parameters_run.jl:66
+gc_update_page_fragmentation_data at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:829 [inlined]
+gc_sweep_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:952 [inlined]
+gc_sweep_pool_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:982
+gc_sweep_pool_parallel at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1274 [inlined]
+jl_parallel_gc_threadfun at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3648
+_pthread_start at /usr/lib/system/libsystem_pthread.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+gc_sweep_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:971 [inlined]
+gc_sweep_pool_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:982
+gc_sweep_pool_parallel at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1274 [inlined]
+jl_parallel_gc_threadfun at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3648
+_pthread_start at /usr/lib/system/libsystem_pthread.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+gc_update_page_fragmentation_data at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:828 [inlined]
+gc_sweep_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:952 [inlined]
+gc_sweep_pool_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:982
+gc_sweep_pool_parallel at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1274 [inlined]
+jl_parallel_gc_threadfun at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3648
+_pthread_start at /usr/lib/system/libsystem_pthread.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+gc_sweep_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:914 [inlined]
+gc_sweep_pool_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:982
+gc_sweep_pool_parallel at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1274 [inlined]
+jl_parallel_gc_threadfun at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3648
+_pthread_start at /usr/lib/system/libsystem_pthread.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+gc_sweep_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:971 [inlined]
+gc_sweep_pool_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:982
+gc_sweep_pool_parallel at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1274 [inlined]
+jl_parallel_gc_threadfun at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3648
+_pthread_start at /usr/lib/system/libsystem_pthread.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+gc_sweep_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:971 [inlined]
+gc_sweep_pool_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:982
+gc_sweep_pool_parallel at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1274 [inlined]
+jl_parallel_gc_threadfun at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3648
+_pthread_start at /usr/lib/system/libsystem_pthread.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+__psynch_cvwait at /usr/lib/system/libsystem_kernel.dylib (unknown line)
+unknown function (ip: 0x0) at (unknown file)
+push_lf_back at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/./gc-stock.h:161 [inlined]
+gc_sweep_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:953 [inlined]
+gc_sweep_pool_page at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:982
+gc_sweep_pool_parallel at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1274
+gc_sweep_pool at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:1393 [inlined]
+_jl_gc_collect at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3183
+ijl_gc_collect at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:3471
+maybe_collect at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:350 [inlined]
+jl_gc_small_alloc_inner at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:726 [inlined]
+ijl_gc_small_alloc at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/gc-stock.c:775
+Array at ./boot.jl:648 [inlined]
+Array at ./boot.jl:660 [inlined]
+zeros at ./array.jl:595 [inlined]
+zeros at ./array.jl:592 [inlined]
+zeros at ./array.jl:590 [inlined]
+machinery_allocation at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/src/Model.jl:111
+balances! at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/src/Model.jl:195
+Void at /Users/jdv27/.julia/packages/SciMLBase/J3OUh/src/utils.jl:513 [inlined]
+CallWrapper at /Users/jdv27/.julia/packages/FunctionWrappers/Q5cBx/src/FunctionWrappers.jl:65
+unknown function (ip: 0x1430e44ef) at (unknown file)
+macro expansion at /Users/jdv27/.julia/packages/FunctionWrappers/Q5cBx/src/FunctionWrappers.jl:137 [inlined]
+do_ccall at /Users/jdv27/.julia/packages/FunctionWrappers/Q5cBx/src/FunctionWrappers.jl:125 [inlined]
+FunctionWrapper at /Users/jdv27/.julia/packages/FunctionWrappers/Q5cBx/src/FunctionWrappers.jl:144 [inlined]
+_call at /Users/jdv27/.julia/packages/FunctionWrappersWrappers/9XR0m/src/FunctionWrappersWrappers.jl:12 [inlined]
+FunctionWrappersWrapper at /Users/jdv27/.julia/packages/FunctionWrappersWrappers/9XR0m/src/FunctionWrappersWrappers.jl:10 [inlined]
+ODEFunction at /Users/jdv27/.julia/packages/SciMLBase/J3OUh/src/scimlfunctions.jl:2662 [inlined]
+perform_step! at /Users/jdv27/.julia/packages/OrdinaryDiffEqRosenbrock/eGDYm/src/rosenbrock_perform_step.jl:84
+perform_step! at /Users/jdv27/.julia/packages/OrdinaryDiffEqCore/mNgXc/src/perform_step/composite_perform_step.jl:165 [inlined]
+perform_step! at /Users/jdv27/.julia/packages/OrdinaryDiffEqCore/mNgXc/src/perform_step/composite_perform_step.jl:162 [inlined]
+solve! at /Users/jdv27/.julia/packages/OrdinaryDiffEqCore/mNgXc/src/solve.jl:843
+#__solve#58 at /Users/jdv27/.julia/packages/OrdinaryDiffEqCore/mNgXc/src/solve.jl:10 [inlined]
+__solve at /Users/jdv27/.julia/packages/OrdinaryDiffEqCore/mNgXc/src/solve.jl:1 [inlined]
+#solve_call#22 at /Users/jdv27/.julia/packages/DiffEqBase/XLzeg/src/solve.jl:172 [inlined]
+solve_call at /Users/jdv27/.julia/packages/DiffEqBase/XLzeg/src/solve.jl:137 [inlined]
+#solve_up#29 at /Users/jdv27/.julia/packages/DiffEqBase/XLzeg/src/solve.jl:630 [inlined]
+solve_up at /Users/jdv27/.julia/packages/DiffEqBase/XLzeg/src/solve.jl:603 [inlined]
+#solve#28 at /Users/jdv27/.julia/packages/DiffEqBase/XLzeg/src/solve.jl:587 [inlined]
+solve at /Users/jdv27/.julia/packages/DiffEqBase/XLzeg/src/solve.jl:575
+unknown function (ip: 0x143054373) at (unknown file)
+#simulate#2 at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/src/Solve.jl:32
+simulate at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/src/Solve.jl:15 [inlined]
+#evaluate_objectives#3 at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/src/Objective.jl:38
+evaluate_objectives at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/src/Objective.jl:16 [inlined]
+OF_single at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/scripts/estimate_parameters_run.jl:45
+OF_so at /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/scripts/estimate_parameters_run.jl:96 [inlined]
+#estimate_ensemble#1 at /Users/jdv27/.julia/packages/ParetoEnsembles/f7FAb/src/Main.jl:99
+unknown function (ip: 0x143306a7b) at (unknown file)
+estimate_ensemble at /Users/jdv27/.julia/packages/ParetoEnsembles/f7FAb/src/Main.jl:72
+unknown function (ip: 0x1432f41e3) at (unknown file)
+jl_apply at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/./julia.h:2391 [inlined]
+do_call at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_stmt_value at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/interpreter.c:194
+eval_body at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/interpreter.c:689
+jl_interpret_toplevel_thunk at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_toplevel_eval_flex at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/toplevel.c:1047 [inlined]
+ijl_toplevel_eval_in at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+eval at ./boot.jl:489
+include_string at ./loading.jl:2870
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+exec_options at ./client.jl:317
+_start at ./client.jl:550
+jfptr__start_56280.1 at /Users/jdv27/.julia/juliaup/julia-1.12.5+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/lib/julia/sys.dylib (unknown line)
+jl_apply at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/./julia.h:2391 [inlined]
+true_main at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /Users/julia/.julia/scratchspaces/a66863c6-20e8-4ff4-8a62-49f30b1f605e/agent-cache/default-honeycrisp-XG3Q6T6R70.0/build/default-honeycrisp-XG3Q6T6R70-0/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+unknown function (ip: 0x0) at (unknown file)
+Allocations: 67076846600 (Pool: 67076844271; Big: 2329); GC: 18998
+  Activating project at `~/Desktop/papers/Gluconate-Sensor-Model-Paper/code`

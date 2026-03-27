@@ -1,0 +1,263 @@
+  Activating project at `~/Desktop/papers/Gluconate-Sensor-Model-Paper/code`
+Starting MO/SO cycling estimation with 15 cycles, 5 chains, 6 objectives...
+Running with 20 threads
+
+============================================================
+CYCLE 1/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2111
+  Worst objective: 1 (Venus_mRNA)
+  Mean errors on front: [2614.2488, 18.4569, 1102.4089, 8.2912, 125.809, 237.7197]
+
+--- SO Phase (objective 1: Venus_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [14.1684, 77.4639, 78.9757, 2.3065, 0.0, 18.6851]
+  Saved cycle 1 results (global archive: 5001 solutions)
+
+============================================================
+CYCLE 2/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2440
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [586.6707, 18.5175, 28341.7877, 4.121, 2270.3689, 76.4315]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [20.4363, 42.3084, 50.8086, 79.7203, 0.0, 159.3531]
+  Saved cycle 2 results (global archive: 10002 solutions)
+
+============================================================
+CYCLE 3/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2170
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [397.5287, 19.4224, 3651.0631, 7.1792, 1080.9529, 65.1708]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [23.1256, 13.4436, 50.7982, 37.5914, 0.0, 40.2418]
+  Saved cycle 3 results (global archive: 15003 solutions)
+
+============================================================
+CYCLE 4/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2040
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [421.1649, 18.6466, 7215.6933, 7.1296, 738.9952, 51.6669]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [21.0879, 78.4618, 50.8411, 0.5452, 0.0, 70.7243]
+  Saved cycle 4 results (global archive: 20004 solutions)
+
+============================================================
+CYCLE 5/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 4966
+  MO Pareto front size: 1695
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [259.5193, 18.3505, 5176.3745, 7.5436, 421.7802, 50.0912]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [21.4994, 31.3401, 50.7893, 1.1341, 0.0, 15.1468]
+  Saved cycle 5 results (global archive: 24971 solutions)
+
+============================================================
+CYCLE 6/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2045
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [524.6628, 17.323, 3915.8534, 7.8395, 270.1548, 33.0021]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [19.1889, 10.9737, 54.0282, 6.8565, 0.0, 34.2429]
+  Saved cycle 6 results (global archive: 29972 solutions)
+
+============================================================
+CYCLE 7/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2163
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [445.3564, 17.4554, 2577.427, 7.1593, 233.4891, 27.7463]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [23.8849, 16.9733, 50.8003, 0.5299, 0.0, 16.5076]
+  Saved cycle 7 results (global archive: 34973 solutions)
+
+============================================================
+CYCLE 8/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2044
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [266.472, 15.2131, 1758.4095, 6.7313, 700.6028, 24.3071]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [20.2948, 213.5135, 50.7937, 129.7147, 0.0, 557.0691]
+  Saved cycle 8 results (global archive: 39974 solutions)
+
+============================================================
+CYCLE 9/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 1664
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [238.7715, 15.6844, 1843.2582, 6.114, 656.8807, 24.2402]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [21.0065, 35.9025, 50.8107, 25.5061, 0.0, 142.8513]
+  Saved cycle 9 results (global archive: 44975 solutions)
+
+============================================================
+CYCLE 10/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2887
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [387.7902, 15.6814, 3546.8049, 5.9265, 714.3276, 27.4538]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [20.5961, 28.3256, 50.8207, 11.1581, 9.5579, 188.6224]
+  Saved cycle 10 results (global archive: 49976 solutions)
+
+============================================================
+CYCLE 11/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2163
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [346.5466, 15.0799, 3375.5169, 5.772, 853.2966, 26.7338]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [26.3785, 96.5084, 50.792, 8.5702, 0.0, 90.0456]
+  Saved cycle 11 results (global archive: 54977 solutions)
+
+============================================================
+CYCLE 12/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2043
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [324.7121, 15.006, 3336.5132, 5.5366, 1180.0884, 26.0309]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [74.3601, 28.3707, 50.7839, 0.2288, 0.0, 26.0746]
+  Saved cycle 12 results (global archive: 59978 solutions)
+
+============================================================
+CYCLE 13/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 4844
+  MO Pareto front size: 2207
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [314.4476, 14.4201, 11134.8433, 5.3512, 4079.5425, 26.6194]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [21.9682, 15.2898, 50.7876, 4.0102, 0.0, 14.3229]
+  Saved cycle 13 results (global archive: 64823 solutions)
+
+============================================================
+CYCLE 14/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 5000
+  MO Pareto front size: 2000
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [282.9819, 14.4318, 11618.1831, 5.1295, 3880.6579, 27.2419]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [24.6968, 13.7792, 50.7848, 1.5486, 0.0, 14.0779]
+  Saved cycle 14 results (global archive: 69824 solutions)
+
+============================================================
+CYCLE 15/15
+============================================================
+
+--- MO Phase (5 chains, 50 iterations) ---
+  MO archive size: 4947
+  MO Pareto front size: 2256
+  Worst objective: 3 (GntR_mRNA)
+  Mean errors on front: [241.8311, 13.7989, 12288.0882, 4.7556, 3585.4064, 25.7019]
+
+--- SO Phase (objective 3: GntR_mRNA, 30 iterations) ---
+  SO archive size: 4
+  SO best full errors: [22.5117, 12.1933, 50.7873, 0.2772, 0.0, 17.9647]
+  Saved cycle 15 results (global archive: 74772 solutions)
+
+============================================================
+FINAL ENSEMBLE
+============================================================
+Solutions with rank ≤ 1: 9338
+Pareto-optimal (rank 0): 6859
+
+Ensemble parameter statistics:
+  dG_GntR_RNAP           mean=0.07239      std=0.1465       CV=202.3%
+  dG_GntR_sigma70        mean=-0.04047     std=0.1662       CV=410.6%
+  dG_Venus_RNAP          mean=3.202        std=1.078        CV=33.7%
+  dG_Venus_sigma70       mean=-0.02953     std=0.05562      CV=188.3%
+  dG_Venus_GntR          mean=-0.7645      std=0.4854       CV=63.5%
+  n_GntR_sigma70         mean=1.2          std=0.9679       CV=80.7%
+  K_GntR_sigma70         mean=0.5331       std=3.554        CV=666.7%
+  n_Venus_sigma70        mean=2.358        std=2.012        CV=85.3%
+  K_Venus_sigma70        mean=1.677        std=4.84         CV=288.6%
+  n_Venus_GntR           mean=3.568        std=2.348        CV=65.8%
+  K_Venus_GntR           mean=0.005507     std=0.04122      CV=748.6%
+  tau_mRNA_GntR          mean=0.09282      std=0.1027       CV=110.6%
+  tau_mRNA_Venus         mean=0.005554     std=0.05561      CV=1001.2%
+  tau_protein_GntR       mean=12.84        std=17.73        CV=138.1%
+  tau_protein_Venus      mean=0.8503       std=1.371        CV=161.3%
+  deg_mRNA_GntR          mean=0.03823      std=0.04564      CV=119.4%
+  deg_mRNA_Venus         mean=19.84        std=20.62        CV=104.0%
+  deg_protein_GntR       mean=0.004611     std=0.02708      CV=587.4%
+  deg_protein_Venus      mean=0.005172     std=0.04091      CV=791.1%
+  deg_protein_sigma70    mean=0.004296     std=0.02262      CV=526.6%
+  KL                     mean=358.6        std=263.4        CV=73.5%
+  n_gluconate            mean=3.285        std=0.9676       CV=29.5%
+  K_gluconate            mean=0.2167       std=0.1799       CV=83.1%
+  alpha_X                mean=0.0001056    std=8.019e-5     CV=75.9%
+  alpha_L                mean=4.059e-6     std=1.752e-5     CV=431.5%
+
+Done. Results saved to /Users/jdv27/Desktop/papers/Gluconate-Sensor-Model-Paper/code/scripts/../results

@@ -1,0 +1,18 @@
+[Seed run 2] Starting from seed 537 (15 cycles, 8 chains, 7 threads)
+[Seed run 2] Cycle 1/15: archive=8001, worst=GntR_mRNA, 169.6s (2.8 min)
+[Seed run 2] Cycle 2/15: archive=16002, worst=GntR_mRNA, 156.2s (5.4 min)
+[Seed run 2] Cycle 3/15: archive=23897, worst=GntR_mRNA, 173.1s (8.3 min)
+[Seed run 2] Cycle 4/15: archive=31887, worst=GntR_mRNA, 173.8s (11.2 min)
+[Seed run 2] Cycle 5/15: archive=39558, worst=GntR_mRNA, 158.4s (13.9 min)
+[Seed run 2] Cycle 6/15: archive=47559, worst=GntR_mRNA, 173.8s (16.8 min)
+[Seed run 2] Cycle 7/15: archive=55402, worst=GntR_mRNA, 160.3s (19.4 min)
+[Seed run 2] Cycle 8/15: archive=63403, worst=GntR_mRNA, 171.7s (22.3 min)
+[Seed run 2] Cycle 9/15: archive=71404, worst=GntR_mRNA, 182.7s (25.3 min)
+[Seed run 2] Cycle 10/15: archive=79280, worst=GntR_mRNA, 194.7s (28.6 min)
+[Seed run 2] Cycle 11/15: archive=87281, worst=GntR_mRNA, 186.7s (31.7 min)
+[Seed run 2] Cycle 12/15: archive=95249, worst=GntR_mRNA, 186.0s (34.8 min)
+[Seed run 2] Cycle 13/15: archive=102998, worst=GntR_mRNA, 183.4s (37.9 min)
+[Seed run 2] Cycle 14/15: archive=110999, worst=GntR_mRNA, 199.4s (41.2 min)
+[Seed run 2] Cycle 15/15: archive=119000, worst=GntR_mRNA, 211.1s (44.7 min)
+[Seed run 2] Done in 45.2 min. Ensemble: 14703, archive: 119000
+  Activating project at `~/Desktop/papers/Gluconate-Sensor-Model-Paper/code`

@@ -128,16 +128,16 @@ end
 if isfile(joinpath(RESULTS_DIR, "dose_dense_log_gluconate.dat"))
     log_doses = vec(readdlm(joinpath(RESULTS_DIR, "dose_dense_log_gluconate.dat")))
     med = vec(readdlm(joinpath(RESULTS_DIR, "dose_dense_venus_median.dat")))
-    q025 = vec(readdlm(joinpath(RESULTS_DIR, "dose_dense_venus_q025.dat")))
-    q975 = vec(readdlm(joinpath(RESULTS_DIR, "dose_dense_venus_q975.dat")))
+    dose_mean = vec(readdlm(joinpath(RESULTS_DIR, "dose_dense_venus_mean.dat")))
+    dose_std = vec(readdlm(joinpath(RESULTS_DIR, "dose_dense_venus_std.dat")))
     log_dose_exp = log10.(exp_data.dose_gluconate)
 
     fig = Figure(size = (550, 450), fontsize = 14, figure_padding = 20)
     ax = Axis(fig[1, 1], xlabel = "log [Gluconate] (mM)", ylabel = "[Venus] (μM)",
               xlabelsize = 13, ylabelsize = 13, xticks = -4:1:1)
 
-    band!(ax, log_doses, q025, q975, color = BAND_COLOR)
-    lines!(ax, log_doses, med, color = LINE_COLOR, linewidth = LINE_WIDTH)
+    band!(ax, log_doses, max.(dose_mean .- 1.96 .* dose_std, 0.0), dose_mean .+ 1.96 .* dose_std, color = BAND_COLOR)
+    lines!(ax, log_doses, dose_mean, color = LINE_COLOR, linewidth = LINE_WIDTH)
     errorbars!(ax, log_dose_exp, exp_data.dose_venus_mean, exp_data.dose_venus_std,
                color = DATA_COLOR, whiskerwidth = 6, linewidth = 1.5)
     scatter!(ax, log_dose_exp, exp_data.dose_venus_mean, color = DATA_COLOR, markersize = 10)

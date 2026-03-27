@@ -1,1 +1,0 @@
-[Run 1] Starting (15 cycles, 8 chains, 7 threads)

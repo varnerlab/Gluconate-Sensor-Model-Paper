@@ -8,7 +8,7 @@ Evaluate the 6 training objectives:
   2. Venus protein SSE at 10 mM gluconate (dense time course)
   3. GntR mRNA SSE at 10 mM gluconate (5 time points)
   4. Venus protein SSE at 0 mM gluconate — full repression (dense time course)
-  5. GntR protein regularization — penalizes if outside [5, 15] μM
+  5. GntR protein regularization — penalizes if outside [1, 20] μM
   6. Venus protein SSE for no-GntR control — unrepressed ceiling (dense time course)
 
 Returns a vector of 6 error values. Returns fill(1e12, 6) if simulation fails.
@@ -60,12 +60,15 @@ function evaluate_objectives(pvec::Vector{Float64}, bio::BiophysicalConstants,
         return fill(BIG, N_OBJ)
     end
 
-    # --- Objective 1: Venus mRNA SSE (10 mM) ---
+    # --- Objective 1: Venus mRNA weighted SSE (10 mM) ---
+    # Weighted by 1/σ² so each point contributes proportionally to its precision
     err_venus_mRNA = 0.0
     for (i, t) in enumerate(exp_data.mRNA_time)
+        σ = exp_data.mRNA_venus_std[i]
+        σ < 1e-9 && continue  # skip t=0
         sim_val = sol_10(t)[5]
         exp_val = exp_data.mRNA_venus_mean[i]
-        err_venus_mRNA += (sim_val - exp_val)^2
+        err_venus_mRNA += ((sim_val - exp_val) / σ)^2
     end
 
     # --- Objective 2: Venus protein SSE (10 mM) ---
@@ -77,12 +80,14 @@ function evaluate_objectives(pvec::Vector{Float64}, bio::BiophysicalConstants,
         err_venus_protein += (sim_val - exp_val)^2
     end
 
-    # --- Objective 3: GntR mRNA SSE (10 mM) ---
+    # --- Objective 3: GntR mRNA weighted SSE (10 mM) ---
     err_gntr_mRNA = 0.0
     for (i, t) in enumerate(exp_data.mRNA_time)
+        σ = exp_data.mRNA_gntr_std[i]
+        σ < 1e-9 && continue  # skip t=0
         sim_val = sol_10(t)[4]
         exp_val = exp_data.mRNA_gntr_mean[i]
-        err_gntr_mRNA += (sim_val - exp_val)^2
+        err_gntr_mRNA += ((sim_val - exp_val) / σ)^2
     end
 
     # --- Objective 4: Venus protein SSE (0 mM — full repression) ---
@@ -95,16 +100,12 @@ function evaluate_objectives(pvec::Vector{Float64}, bio::BiophysicalConstants,
     end
 
     # --- Objective 5: GntR protein regularization ---
-    # Soft quadratic centered at 10 μM with hard walls at [5, 15].
-    # Weight λ chosen so penalty ≈ 1 at the walls (same scale as SSE objectives).
     gntr_protein_12h = sol_10(12.0)[7]
-    gntr_target = 10.0  # μM
-    λ_gntr = 0.04       # (gntr - 10)^2 * 0.04 = 1.0 at gntr = 5 or 15
-    err_gntr_reg = λ_gntr * (gntr_protein_12h - gntr_target)^2
-    if gntr_protein_12h < 5.0
-        err_gntr_reg += (gntr_protein_12h - 5.0)^2
-    elseif gntr_protein_12h > 15.0
-        err_gntr_reg += (gntr_protein_12h - 15.0)^2
+    err_gntr_reg = 0.0
+    if gntr_protein_12h < 1.0
+        err_gntr_reg = (gntr_protein_12h - 1.0)^2
+    elseif gntr_protein_12h > 20.0
+        err_gntr_reg = (gntr_protein_12h - 20.0)^2
     end
 
     # --- Objective 6: Venus protein SSE (no-GntR — unrepressed ceiling) ---
