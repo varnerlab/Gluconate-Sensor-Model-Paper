@@ -32,3 +32,4 @@ code/results/*.dat
 code/results/*.jld2
 code/results/figures/
 !code/results/.gitkeep
+paper/cover_letter.*
