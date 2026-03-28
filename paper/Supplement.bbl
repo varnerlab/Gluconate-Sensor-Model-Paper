@@ -1,0 +1,39 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+\providecommand{\bibAnnoteFile}[1]{%
+  \IfFileExists{#1}{\begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+\providecommand{\bibAnnote}[2]{%
+  \begin{quotation}\noindent\textsc{Key:} #1\\
+  \textsc{Annotation:}\ #2\end{quotation}}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{mcclure_1980}
+McClure WR (1980) Rate-limiting steps in rna chain initiation.
+\newblock Proceedings of the National Academy of Sciences 77: 5634--5638.
+\bibAnnoteFile{mcclure_1980}
+
+\bibitem{adhikari2020effective}
+Adhikari A, Vilkhovoy M, Vadhin S, Lim HE, Varner JD (2020) Effective
+  biophysical modeling of cell free transcription and translation processes.
+\newblock Frontiers in bioengineering and biotechnology 8: 539081.
+\bibAnnoteFile{adhikari2020effective}
+
+\bibitem{ackers1982quantitative}
+Ackers GK, Johnson AD, Shea MA (1982) Quantitative model for gene regulation by
+  lambda phage repressor.
+\newblock Proceedings of the National Academy of Sciences 79: 1129--1133.
+\bibAnnoteFile{ackers1982quantitative}
+
+\bibitem{moon2012genetic}
+Moon TS, Lou C, Tamsir A, Stanton BC, Voigt CA (2012) Genetic programs
+  constructed from layered logic gates in single cells.
+\newblock Nature 491: 249--253.
+\bibAnnoteFile{moon2012genetic}
+
+\end{thebibliography}

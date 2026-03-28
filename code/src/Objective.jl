@@ -60,15 +60,12 @@ function evaluate_objectives(pvec::Vector{Float64}, bio::BiophysicalConstants,
         return fill(BIG, N_OBJ)
     end
 
-    # --- Objective 1: Venus mRNA weighted SSE (10 mM) ---
-    # Weighted by 1/σ² so each point contributes proportionally to its precision
+    # --- Objective 1: Venus mRNA SSE (10 mM) ---
     err_venus_mRNA = 0.0
     for (i, t) in enumerate(exp_data.mRNA_time)
-        σ = exp_data.mRNA_venus_std[i]
-        σ < 1e-9 && continue  # skip t=0
         sim_val = sol_10(t)[5]
         exp_val = exp_data.mRNA_venus_mean[i]
-        err_venus_mRNA += ((sim_val - exp_val) / σ)^2
+        err_venus_mRNA += (sim_val - exp_val)^2
     end
 
     # --- Objective 2: Venus protein SSE (10 mM) ---
@@ -80,14 +77,12 @@ function evaluate_objectives(pvec::Vector{Float64}, bio::BiophysicalConstants,
         err_venus_protein += (sim_val - exp_val)^2
     end
 
-    # --- Objective 3: GntR mRNA weighted SSE (10 mM) ---
+    # --- Objective 3: GntR mRNA SSE (10 mM) ---
     err_gntr_mRNA = 0.0
     for (i, t) in enumerate(exp_data.mRNA_time)
-        σ = exp_data.mRNA_gntr_std[i]
-        σ < 1e-9 && continue  # skip t=0
         sim_val = sol_10(t)[4]
         exp_val = exp_data.mRNA_gntr_mean[i]
-        err_gntr_mRNA += ((sim_val - exp_val) / σ)^2
+        err_gntr_mRNA += (sim_val - exp_val)^2
     end
 
     # --- Objective 4: Venus protein SSE (0 mM — full repression) ---
