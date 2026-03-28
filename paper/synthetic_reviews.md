@@ -1,4 +1,4 @@
-# Synthetic Peer Reviews
+# Synthetic Peer Reviews (Updated March 2026)
 
 Manuscript: "Mechanistic Resource Competition Modeling of a Cell-Free Gluconate Biosensor"
 Journal: Frontiers in Bioengineering and Biotechnology
@@ -7,100 +7,111 @@ Journal: Frontiers in Bioengineering and Biotechnology
 
 ## Reviewer 1 (Cell-free systems experimentalist)
 
-**Overall assessment:** The manuscript presents a mathematical model for a gluconate-responsive biosensor in a reconstituted cell-free system. The resource competition framework is an interesting contribution. However, several experimental and presentation issues should be addressed before publication.
+**Overall assessment:** The manuscript presents a mechanistic two-layer resource competition model for a cell-free gluconate biosensor. The framework is well-motivated, the fed-batch validation is a nice addition, and the connection to the Li et al. and Jurado et al. literature strengthens the resource bottleneck claims. However, several experimental concerns remain.
 
 **Major concerns:**
 
-1. **Lack of GntR protein validation.** The model predicts GntR protein at ~10 uM, but this was never measured. The authors acknowledge this limitation, but it significantly weakens the claim that the resource competition model "naturally bounds" GntR protein. Without experimental validation, the predicted GntR level is an assertion, not a result. Could the authors at minimum compare their predicted GntR concentration to what would be expected based on the known expression levels from P70 in PURExpress from the literature? Is 10 uM reasonable given 10 nM DNA template and 12 hours of expression?
+1. **GntR protein remains unvalidated.** The model predicts GntR at 7.7 +/- 2.0 uM (CV=26%), but this has never been measured. The Discussion provides a back-of-envelope scaling argument, but this is not validation. The authors should at minimum note that Western blot, mass spectrometry, or a tagged GntR construct could resolve this. The relatively high CV (26%) means the prediction carries substantial uncertainty.
 
-2. **The 0 mM gluconate condition was used for both training and validation.** The authors state they trained on 10 mM and 0 mM conditions and then validated on the dose-response. However, the 0 mM condition is effectively one endpoint of the dose-response curve. This means the model was anchored at both extremes (0 mM and 10 mM), and the "prediction" is really interpolation between two known points. The authors should be more transparent about this. True blind prediction would involve training on only the 10 mM condition (or some intermediate condition) and predicting both endpoints.
+2. **Ensemble size is small (N=78).** The authors started with 73,747 candidate solutions but filtered down to 78. While the filtering criteria are reasonable (mRNA CV, GntR bounds, dose-response quality, K/n consistency), this aggressive filtering raises the question: are 78 solutions sufficient to characterize parameter uncertainty? The 95% confidence bands on the model predictions are derived from only 78 trajectories. The authors should discuss whether this is adequate or whether larger ensembles (e.g., seeded re-estimation as described in their Methods) would change the conclusions.
 
-3. **Missing time-course data at intermediate gluconate concentrations.** The protein time courses at individual gluconate doses (0.0001 to 20 mM) were collected but are not shown. The old preprint included these as supplementary figures (S2-S10). The current manuscript only shows the 12h endpoint. Including the full time courses would demonstrate whether the model captures the dynamics at intermediate doses, not just the endpoints.
+3. **Venus mRNA shape is not captured.** The model predicts Venus mRNA peaking at t~0.5h and declining monotonically, while the experimental data shows a rise to peak at 6h. The authors attribute this to exogenous sigma70, which is a reasonable explanation, but this means the model fundamentally cannot capture the transcriptional dynamics it claims to describe. The mRNA fit should be discussed more critically — the 95% band may encompass the data points, but the mean trajectory is qualitatively wrong in shape.
 
-4. **Experimental details from the preprint appear incomplete.** The mRNA data figure (Fig. 2) references panel C for GntR mRNA, but in the three-panel figure, panel C appears to show GntR mRNA only for the repressed and de-repressed cases. The caption mentions protein levels in panel A, but panel A appears to show protein (not mRNA). Please verify the panel labels match the caption.
+4. **Venus protein is ~10% high.** The model predicts 1.87 uM at 12h vs experimental ~1.7 uM. While within the 95% band, this systematic overshoot should be acknowledged. Combined with the dose-response baseline being ~0.8 uM (vs data ~0.55 uM), the model appears to compress the dynamic range.
 
 **Minor concerns:**
 
-5. The sensitivity heatmap (Fig. 6) is dominated by alpha_X and alpha_L to the point that all other parameters appear as zero. A log-scale or ranking-based visualization would be more informative for comparing the relative importance of non-resource parameters.
+5. The three-panel experimental data figure (Fig. 2) now uses a horizontal layout which is cleaner, but the protein data in panel A still shows considerable scatter at early time points (0-2h). Were these measurements taken during the lag phase before fluorescence develops? This could affect the protein SSE if these noisy early points dominate the objective.
 
-6. Line 260: "the four empirical resource depletion parameters (onset, slope, T_{L,1/2}, and translation capacity initial condition) were removed." The previous model had these parameters, but the manuscript does not clearly enumerate what the old parameters were. A brief comparison table (old vs. new model) would help readers who are not familiar with the prior work.
+6. The notation switches between epsilon (resource fractions) and alpha (consumption rates) without a clear conceptual distinction upfront. A brief sentence early in the Methods noting "epsilon tracks how much resource remains, alpha governs how fast it is consumed" would help readability.
 
-7. The number of biological replicates for the mRNA measurements is not stated (only "at least three" for protein). How many replicates were used for qPCR?
-
-8. The manuscript should cite more recent cell-free biosensor modeling work (2023-2025). The reference list is sparse for a modeling paper in this active field.
-
-**Recommendation:** Major revision.
+**Recommendation:** Minor revision. The framework is sound, the fed-batch analysis is novel, and the paper is well-written. Address the GntR validation concern, acknowledge the Venus mRNA shape limitation more prominently, and discuss ensemble size adequacy.
 
 ---
 
-## Reviewer 2 (Mathematical modeling / systems biology)
+## Reviewer 2 (Mathematical modeler / parameter estimation)
 
-**Overall assessment:** This is a solid modeling contribution. The two-layer resource competition framework (machinery allocation + consumable depletion) is well-motivated, mathematically clean, and represents a genuine advance over the ad hoc decay functions used previously. The parameter estimation approach using MO/SO cycling is novel and interesting. I have several concerns about model identifiability and the interpretation of results.
+**Overall assessment:** This is a strong modeling paper with a clean framework and an interesting multi-objective estimation approach. The supplement provides thorough derivations, and the Pareto front visualization (Fig. S2) is a valuable addition. Several methodological concerns should be addressed.
 
 **Major concerns:**
 
-1. **Parameter identifiability is a significant concern.** Table 1 shows that many parameters have coefficients of variation exceeding 100% (e.g., K_{P70,hRNAP} at 630%, K_L at 136%, tau_{L,GntR} at 78%). The correlation analysis (Fig. 7) reveals strong correlations among translation parameters (rho > 0.82 for the tau_protein/K_L cluster). This suggests that these parameters are structurally non-identifiable from the available data. The authors discuss this briefly but should perform a more rigorous identifiability analysis. At minimum, they should: (a) compute the Fisher Information Matrix or profile likelihoods for the key parameters, (b) report which parameters are practically identifiable given the data, and (c) discuss whether the poorly identified parameters affect the model's predictive capability (they may not, if the correlated combinations are well-determined).
+1. **Post-filtering uses validation data.** The ensemble was filtered based on dose-response chi-square (top 50%), which includes gluconate concentrations that were not part of the training set (0.1, 0.5, 1, 5 mM). This means the "predicted" dose-response is no longer a true blind prediction — it was used to select the ensemble. The authors should be transparent about this. One solution: report both the unfiltered and DR-filtered dose-response predictions, showing that the sigmoid shape and approximate K_gluconate are captured even without dose-response filtering.
 
-2. **The ensemble filtering procedure introduces bias.** The authors generated 52,542 solutions through 15 MO/SO cycles and then post-filtered to 5,464 based on GntR protein being in [7, 13] uM, Venus protein in [1.3, 2.2] uM, Venus at 0.5 mM in [0.5, 1.1] uM, and Venus at 0 mM in [0.3, 0.9] uM. This is effectively using the dose-response data (specifically the 0.5 mM and 0 mM points) as additional training constraints. The filtering criteria include outcomes that are supposed to be validation targets. This compromises the claim of blind prediction. The authors should either: (a) filter based only on training-condition criteria (10 mM and 0 mM time courses, GntR regularization) and report the resulting dose-response prediction, or (b) be transparent that the ensemble was selected to match the full dose-response and acknowledge that the dose-response is therefore not a true prediction.
+2. **The competitive allocation approximation vs. exact multi-gene kinetics.** The supplement correctly derives the single-gene rate expression (Eqn S17) from the 4-step mechanism, but the multi-gene implementation (Eqn S22, the f_j/R_free factoring) is presented without discussing its relationship to the exact multi-gene result. For N genes, the exact rate involves cross-competition terms O_{X,j} (Adhikari et al. 2020, Eqn 3). The code uses a competitive allocation approximation instead. Have the authors verified that this approximation is adequate for their system? A brief comparison of the approximate vs. exact rates at the estimated parameter values would strengthen confidence in the formulation.
 
-3. **The resource consumption parameters alpha_X and alpha_L dominate the sensitivity analysis to a degree that is concerning.** If two parameters control essentially all model outputs, the remaining 23 parameters may be underdetermined. The authors should discuss whether the model is effectively a two-parameter model (alpha_X, alpha_L) with 23 nuisance parameters that provide fine-tuning. This would not invalidate the contribution but would change the interpretation.
+3. **Parameter identifiability beyond distributions.** The parameter distribution figure (Fig. S3) is useful but provides only marginal information. Several parameters show strong pairwise correlations (the tau/K_L cluster, the dG/tau_mRNA compensations). A scatter plot of the most correlated parameter pairs, or a subset of the 2D marginals, would help the reader understand which parameter *combinations* are identified vs. which individual parameters are sloppy. The correlation heatmap (Fig. 7) partially addresses this but doesn't show the 2D structure.
 
-4. **The machinery allocation layer (Eqs. 10-13) may not contribute meaningfully.** Since gene concentrations are constant, R_{X,free} is also constant throughout the simulation. The authors should demonstrate that the machinery allocation actually improves the model fit compared to a simpler model with only the consumable depletion layer. An ablation study (consumable-only vs. full two-layer model) would strengthen the paper.
+4. **Sensitivity analysis uses mean +/- 3 SD parameter ranges.** With N=78 and some parameters having non-Gaussian distributions (skewed, bound-hitting), the mean +/- 3 SD range may extend well beyond the actual ensemble support. Did the authors verify that the Morris trajectories remained in physically meaningful regions? Were any trajectories infeasible (e.g., producing negative concentrations or solver failures)?
 
 **Minor concerns:**
 
-5. The MO/SO cycling strategy is interesting but not well-characterized. How many cycles are needed for convergence? Does the SO phase always target Venus protein (as the output suggests)? A convergence plot showing objective values across cycles would be valuable.
+5. The MO/SO cycling strategy is described well, but no convergence diagnostic is provided. Do the objective values plateau by cycle 15, or would additional cycles improve the ensemble? A simple plot of best total error vs. cycle number would answer this.
 
-6. Equation 14 includes u_bar_j in the epsilon_X depletion term, meaning that the transcription control function affects resource depletion. Is this correct? If a gene is repressed (u_bar_j near 0), it should not consume NTPs. But the kinetic rate r_{X,j} already includes machinery allocation -- does double-counting occur between r_{X,j} and u_bar_j?
+6. The fed-batch supplementation analysis (Table 2) is a nice in silico experiment, but the connection to experimental validation is qualitative ("consistent with Li et al."). Could the authors quantify this comparison? For example, Li et al. reported ~2-fold improvement with CP+Mg supplementation; the model predicts 52% increase with full epsilon_X replenishment. Is this discrepancy expected given the different systems (PURE vs. PURExpress)?
 
-7. The polysome factor K_P in Eq. 6 is mentioned as a constant but its value is not given in Table 1 or the text. What value was used?
+7. K_P (polysome factor) is mentioned in Eqn 6 but its value is not given. Is it set to 1? If so, state this explicitly.
 
-8. The units of alpha_X and alpha_L in Table 1 are (uM * nt * hr)^-1 and (uM * aa * hr)^-1. These are unusual units. Could the authors provide a physical interpretation? For example, what NTP concentration does alpha_X correspond to if the total NTP pool in PURExpress is known?
-
-**Recommendation:** Minor revision. The modeling framework is sound, but the identifiability and filtering concerns should be addressed transparently.
+**Recommendation:** Minor revision. The framework and estimation are solid. Address the filtering/prediction concern transparently, clarify the competitive allocation approximation, and provide convergence diagnostics.
 
 ---
 
-## Reviewer 3 (Biosensor design / synthetic biology applications)
+## Reviewer 3 (Synthetic biology / biosensor applications)
 
-**Overall assessment:** The paper presents a modeling framework for a cell-free gluconate biosensor. While the mathematical framework is rigorous, the practical utility of the work for the biosensor community is limited. The paper reads more as a modeling exercise than a biosensor study.
+**Overall assessment:** The paper has improved significantly from its earlier form, with better literature contextualization, the fed-batch validation, and proper biosensor performance metrics. However, the practical impact remains limited by the single-circuit demonstration.
 
 **Major concerns:**
 
-1. **Limited practical relevance of gluconate sensing.** The introduction claims gluconate detection is "relevant to food safety and industrial fermentation monitoring" but provides no citations or context for this claim. What are the actual applications? What concentration ranges matter in practice? How does the biosensor's dynamic range (0.5-1.8 uM Venus over 0.1-10 mM gluconate) compare to existing detection methods? Without this context, the choice of gluconate as the target analyte appears arbitrary.
+1. **Generalizability not demonstrated.** The paper's strongest claim — that the framework provides "quantitative design rules for allocating transcriptional and translational capacity" — requires demonstration on more than one circuit. The two-layer formulation is general, but has it been tested on circuits with different gene numbers, different promoter strengths, or different repressor systems? Even a simple prediction (e.g., what would happen with 5 nM vs. 10 nM GntR DNA) validated against data would strengthen the generalizability claim.
 
-2. **No comparison to other cell-free biosensor models.** The authors compare their resource model to their own prior work (Adhikari et al. 2020) but do not discuss how their approach relates to other resource competition models in the cell-free literature. Several groups have proposed resource-aware models for cell-free systems (e.g., Gyorgy and Murray 2016 on resource competition in genetic circuits; Weisse et al. 2015 on host-circuit interactions; Stogbauer et al. 2012 on cell-free TX/TL resource limitations). The authors should position their two-layer framework relative to these existing approaches.
+2. **76% transcriptional resource depletion is very high.** The model predicts that only 24% of transcriptional resources remain at 12h. This is a strong claim with important design implications. However, the experimental validation is indirect — the mRNA decline is consistent with resource depletion but could also reflect other mechanisms (e.g., RNase accumulation, template degradation, energy cofactor depletion affecting transcription fidelity). The authors discuss the connection to Li et al. and Jurado et al. but acknowledge their alpha parameters are lumped. Could the authors discuss what independent experimental measurements could disambiguate resource depletion from other mechanisms?
 
-3. **The biosensor performance metrics are not adequately characterized.** For a biosensor paper, the authors should report: (a) limit of detection (LOD), (b) dynamic range, (c) response time, (d) selectivity against common interferents, and (e) comparison to existing gluconate detection methods. The dose-response curve provides some of this information implicitly, but the authors should extract and report these standard metrics.
-
-4. **Single circuit, single analyte.** The paper demonstrates the resource model on one circuit with one analyte. The claim that the framework provides "quantitative design rules for allocating transcriptional and translational capacity in synthetic gene circuits" (Conclusions) is not supported without testing on additional circuits. Can the authors predict what would happen with a different gene dosage ratio? A different promoter? A different repressor?
+3. **No comparison to simpler models.** The paper would be strengthened by showing that the two-layer model outperforms simpler alternatives. For example: (a) a model with only consumable depletion (no machinery allocation), (b) a model with the traditional exponential decay, or (c) a model with logistic resource depletion. An AIC/BIC comparison or a prediction accuracy comparison would demonstrate that the added complexity of the two-layer formulation is justified.
 
 **Minor concerns:**
 
-5. The model predicts 81% transcription resource depletion by 12 hours. This is an interesting finding, but the practical implication for biosensor operation is not discussed. If the biosensor is limited by NTP depletion, would supplementing NTPs extend the operational window? This is a straightforward experiment that would validate the model prediction.
+4. The Discussion paragraph on the Li et al. fed-batch comparison is well-written but could note that the model predicts a much larger effect (52% increase) than Li et al. observed (~2-fold at 90 minutes). This difference may reflect the longer time scale of the PURExpress reactions (12h vs. 90 min) and the greater extent of resource depletion.
 
-6. The title emphasizes "mechanistic resource competition" but the biosensor application is equally important. Consider revising the title to better reflect both contributions.
+5. The title is accurate but could be more engaging. Consider: "A mechanistic resource competition framework reveals transcriptional capacity as the primary bottleneck in cell-free biosensor circuits."
 
-7. The paper would benefit from a schematic showing the two-layer resource model architecture (machinery allocation + consumable depletion) as a separate figure. Currently, the reader must reconstruct this from the equations.
+6. The dose-response figure (Fig. 5) shows the model slightly overshooting the upper plateau (~1.9 uM vs. data ~1.7 uM). This is consistent with the Venus protein being 10% high in the training condition. The text notes K_gluconate = 0.13 mM, which is lower than the ~1 mM K_D reported by Daddaoua et al. for GntR-gluconate binding. Is this discrepancy discussed?
 
-8. The bibliography has only 27 references. For a journal paper combining biosensing, modeling, and cell-free systems, this is thin. Recent reviews and primary research in cell-free biosensors (2022-2025) should be cited.
+7. Reference 42 (Li et al. 2017) — please verify the author list. The Church lab has multiple "Li" first authors.
 
-**Recommendation:** Major revision. The modeling is solid but the biosensor framing needs significant strengthening, and the generalizability of the approach should be demonstrated or at least discussed more thoroughly.
+**Recommendation:** Minor revision. The framework is well-developed and the paper is well-written. Address the generalizability concern (even through discussion), provide a model comparison, and clarify the K_gluconate discrepancy.
 
 ---
 
 ## Summary of Key Issues Across Reviewers
 
-| Issue | R1 | R2 | R3 | Severity |
-|-------|----|----|-----|----------|
-| GntR protein not validated | X | | | Major |
-| Ensemble filtering uses validation data | X | X | | Major |
-| Parameter identifiability | | X | | Major |
-| Limited biosensor context/metrics | | | X | Major |
-| No comparison to other resource models | | | X | Major |
-| Sensitivity heatmap dominated by alpha | X | X | | Minor-Major |
-| Missing intermediate dose time courses | X | | | Minor |
-| Ablation study (two-layer vs. one-layer) | | X | | Minor-Major |
-| Thin bibliography | X | | X | Minor |
-| Machinery allocation may not contribute | | X | | Minor-Major |
-| Generalizability not demonstrated | | | X | Major |
+| Issue | R1 | R2 | R3 | Severity | Addressed? |
+|-------|----|----|-----|----------|------------|
+| GntR protein unvalidated | X | | | Major | Acknowledged in text, no experiment possible |
+| Post-filtering uses DR data | | X | | Major | Need transparency |
+| Venus mRNA shape wrong | X | | | Major | Acknowledged (σ70 limitation) |
+| Ensemble size N=78 | X | | | Moderate | Could discuss adequacy |
+| Competitive allocation approximation | | X | | Moderate | Supplement derives it, needs comparison |
+| Generalizability (single circuit) | | | X | Major | Discussion only |
+| No model comparison/ablation | | | X | Major | Not addressed |
+| Convergence diagnostics | | X | | Minor | Not shown |
+| K_gluconate vs literature K_D | | | X | Minor | Not discussed |
+| Venus protein 10% high | X | | X | Minor | Not explicitly noted |
+| K_P value not stated | | X | | Minor | Easy fix |
+
+## Pre-submission Actions (Recommended)
+
+**Must address before submission:**
+- [ ] Add a sentence stating K_P = 1 in the Methods
+- [ ] Note in the Discussion that the dose-response ensemble was filtered using dose-response data and is therefore not a fully blind prediction (but show the sigmoid shape emerges even without this filter)
+- [ ] Fix the duplicate "Second" in the limitations paragraph
+
+**Should address if possible:**
+- [ ] Add a sentence about N=78 adequacy in the Discussion
+- [ ] Discuss K_gluconate (0.13 mM) vs literature K_D (~1 mM from Daddaoua et al.)
+- [ ] Consider the suggested title revision
+- [ ] Note Venus protein systematic overshoot (1.87 vs 1.7 uM)
+
+**Can defer to revision:**
+- [ ] Model ablation/comparison
+- [ ] Generalizability demonstration
+- [ ] Convergence diagnostics
+- [ ] 2D parameter marginals
