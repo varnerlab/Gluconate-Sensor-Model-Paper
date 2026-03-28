@@ -19,7 +19,6 @@
 
 \subsection*{S1. Derivation of transcription and translation kinetic rate expressions}
 
-\subsubsection*{S1.1. Elementary reaction mechanism for transcription}
 We model transcription as a four-step process based on the classical work of McClure \cite{mcclure_1980} and as developed previously \cite{adhikari2020effective}. RNA polymerase (RNAP) binds the promoter of gene $j$ to form a closed complex, which isomerizes to an open complex, from which either abortive initiation or productive elongation occurs:
 \begin{align}
 \mathcal{G}_j + R_X &\rightleftharpoons (\mathcal{G}_j : R_X)_C \label{eq:step1} \\
@@ -29,52 +28,23 @@ We model transcription as a four-step process based on the classical work of McC
 \end{align}
 where $\mathcal{G}_j$ denotes the concentration of gene $j$, $R_X$ is the concentration of \textit{free} RNAP, $(\mathcal{G}_j : R_X)_C$ and $(\mathcal{G}_j : R_X)_O$ are the closed and open complex concentrations, and $m_j$ is the mRNA product. The key idea is that RNAP acts as a pseudo-enzyme: it binds its substrate (the gene), processes it, and dissociates, analogous to Michaelis-Menten kinetics.
 
-\subsubsection*{S1.2. Steady-state approximation for complexes}
 Let $k_+$ (conc$^{-1}$ t$^{-1}$) and $k_-$ (t$^{-1}$) denote the on/off rate constants for RNAP binding at the promoter, $k_I$ (t$^{-1}$) the rate constant for open complex formation, $k_A$ (t$^{-1}$) the abortive initiation rate constant, and $k_{E,j}^X$ (t$^{-1}$) the elongation rate constant for gene $j$. The material balances for the closed and open complexes are:
 \begin{align}
 \frac{d}{dt}(\mathcal{G}_j : R_X)_C &= k_+\,\mathcal{G}_j\,R_X - k_-\,(\mathcal{G}_j : R_X)_C - k_I\,(\mathcal{G}_j : R_X)_C \label{eq:dCC} \\
 \frac{d}{dt}(\mathcal{G}_j : R_X)_O &= k_I\,(\mathcal{G}_j : R_X)_C - k_A\,(\mathcal{G}_j : R_X)_O - k_{E,j}^X\,(\mathcal{G}_j : R_X)_O \label{eq:dOC}
 \end{align}
-Invoking the pseudo-steady-state approximation (justified because complex formation and dissociation are fast compared to mRNA accumulation), we set Eqns.~\ref{eq:dCC}--\ref{eq:dOC} to zero and solve:
+Invoking the pseudo-steady-state approximation (justified because complex formation and dissociation are fast compared to mRNA accumulation), we set Eqns.~\ref{eq:dCC}--\ref{eq:dOC} to zero and solve for the steady-state complex concentrations:
 \begin{align}
 (\mathcal{G}_j : R_X)_C &= \left(\frac{k_+}{k_- + k_I}\right)\mathcal{G}_j\,R_X \equiv K_{X,j}^{-1}\,\mathcal{G}_j\,R_X \label{eq:CC_ss} \\
 (\mathcal{G}_j : R_X)_O &= \left(\frac{k_I}{k_A + k_{E,j}^X}\right)(\mathcal{G}_j : R_X)_C \equiv \tau_{X,j}^{-1}\,(\mathcal{G}_j : R_X)_C \label{eq:OC_ss}
 \end{align}
-where we define the saturation constant $K_{X,j}$ ($\mu$M) and the dimensionless time constant $\tau_{X,j}$:
-\begin{equation}
-K_{X,j}^{-1} \equiv \frac{k_+}{k_- + k_I}, \qquad \tau_{X,j}^{-1} \equiv \frac{k_I}{k_A + k_{E,j}^X}
-\label{eq:K_tau_def}
-\end{equation}
-The ratio $K_{X,j}^{-1}$ has units of inverse concentration and governs the affinity of RNAP for the promoter. The ratio $\tau_{X,j}^{-1}$ compares the rate of open complex formation ($k_I$) to the combined rates of elongation and abortive initiation ($k_A + k_{E,j}^X$), and controls whether the rate-limiting step is initiation or elongation.
-
-Combining Eqns.~\ref{eq:CC_ss}--\ref{eq:OC_ss}, the open complex concentration is:
-\begin{equation}
-(\mathcal{G}_j : R_X)_O = K_{X,j}^{-1}\,\tau_{X,j}^{-1}\,\mathcal{G}_j\,R_X
-\label{eq:OC_combined}
-\end{equation}
-
-\subsubsection*{S1.3. Transcription rate expression}
-The rate of mRNA production for gene $j$ is proportional to the open complex concentration:
+where the saturation constant $K_{X,j}^{-1} \equiv k_+/(k_- + k_I)$ has units of inverse concentration and governs the affinity of RNAP for the promoter, and the dimensionless time constant $\tau_{X,j}^{-1} \equiv k_I/(k_A + k_{E,j}^X)$ compares the rate of open complex formation to the combined rates of elongation and abortive initiation. Combining these expressions, the open complex concentration is $(\mathcal{G}_j : R_X)_O = K_{X,j}^{-1}\,\tau_{X,j}^{-1}\,\mathcal{G}_j\,R_X$, and the rate of mRNA production for gene $j$ is proportional to this quantity:
 \begin{equation}
 \boxed{r_{X,j} = k_{E,j}^X\,(\mathcal{G}_j : R_X)_O = k_{E,j}^X\,K_{X,j}^{-1}\,\tau_{X,j}^{-1}\,\mathcal{G}_j\,R_X}
 \label{eq:rX_general}
 \end{equation}
-where $R_X$ is the free (unbound) RNAP concentration. This expression states that the transcription rate is the product of the elongation rate constant, the probability of finding an open complex (captured by $K^{-1}\tau^{-1}\mathcal{G}_j$), and the available RNAP.
+where $R_X$ is the free (unbound) RNAP concentration. The elongation rate constant $k_{E,j}^X$ is related to the polymerase elongation speed $\dot{v}_X$ (nt/s) and the gene coding length $l_{G,j}$ (nt) by $k_{E,j}^X = \dot{v}_X/l_{G,j}$, and the time constant is parameterized as $\tau_{X,j} = (k_{E,j}^X/k_I)\cdot\hat{\tau}_{X,j}$, where $k_I = 1/t_{\text{init},X}$ is the initiation rate constant estimated from McClure assays \cite{mcclure_1980} and $\hat{\tau}_{X,j}$ is a dimensionless gene-specific modifier estimated from data.
 
-\subsubsection*{S1.4. Elongation rate constant}
-The elongation rate constant $k_{E,j}^X$ is related to the polymerase elongation speed $\dot{v}_X$ (nt/s) and the gene coding length $l_{G,j}$ (nt):
-\begin{equation}
-k_{E,j}^X = \frac{\dot{v}_X}{l_{G,j}}
-\label{eq:kE_def}
-\end{equation}
-Similarly, the time constant $\tau_{X,j}$ is parameterized as:
-\begin{equation}
-\tau_{X,j} = \frac{k_{E,j}^X}{k_I}\cdot\hat{\tau}_{X,j}
-\label{eq:tau_parameterized}
-\end{equation}
-where $k_I = 1/t_{\text{init},X}$ is the initiation rate constant (estimated from McClure assays \cite{mcclure_1980}) and $\hat{\tau}_{X,j}$ is a dimensionless gene-specific modifier that is estimated from data.
-
-\subsubsection*{S1.5. Translation rate expression}
 An identical derivation applies to translation, with ribosome ($R_L$) replacing RNAP and mRNA ($m_j$) replacing gene ($\mathcal{G}_j$):
 \begin{equation}
 \boxed{r_{L,j} = k_{E,j}^L\,K_{L,j}^{-1}\,\tau_{L,j}^{-1}\,m_j\,R_L}
@@ -82,69 +52,41 @@ An identical derivation applies to translation, with ribosome ($R_L$) replacing 
 \end{equation}
 where $k_{E,j}^L = \dot{v}_L / l_{P,j}$ is the translation elongation rate constant, $l_{P,j}$ is the protein length in amino acids, $K_{L,j}$ is the translation saturation constant, and $\tau_{L,j} = (k_{E,j}^L / k_{I,L})\,\hat{\tau}_{L,j}$ is the translation time constant.
 
-\subsubsection*{S1.6. Limiting behavior of the time constant}
-The time constant $\tau_{X,j}$ governs whether gene $j$ is elongation-limited or initiation-limited. Assuming abortive initiation is slow ($k_A \ll k_I, k_{E,j}^X$), then $\tau_{X,j} \simeq k_{E,j}^X / k_I$. In the initiation-limited regime ($\tau_{X,j} \gg 1$, i.e., elongation is fast compared to initiation):
-\begin{equation}
-r_{X,j} \simeq \frac{k_{E,j}^X}{\tau_{X,j}}\,R_{X,T}\left(\frac{\mathcal{G}_j}{K_{X,j} + \mathcal{G}_j}\right)
-\label{eq:rX_init_limited}
-\end{equation}
-which has the familiar Michaelis-Menten form. In the elongation-limited regime ($\tau_{X,j} \ll 1$):
-\begin{equation}
-r_{X,j} \simeq k_{E,j}^X\,R_{X,T}\left(\frac{\mathcal{G}_j}{K_{X,j}\tau_{X,j} + \mathcal{G}_j}\right)
-\label{eq:rX_elong_limited}
-\end{equation}
-where the effective saturation constant is reduced by $\tau_{X,j}$, reflecting tighter RNAP binding when elongation is slow.
+The time constant $\tau_{X,j}$ governs whether gene $j$ is elongation-limited or initiation-limited. Assuming abortive initiation is slow ($k_A \ll k_I, k_{E,j}^X$), then $\tau_{X,j} \simeq k_{E,j}^X / k_I$. In the initiation-limited regime ($\tau_{X,j} \gg 1$), the transcription rate reduces to the familiar Michaelis-Menten form $r_{X,j} \simeq (k_{E,j}^X/\tau_{X,j})\,R_{X,T}\,\mathcal{G}_j/(K_{X,j} + \mathcal{G}_j)$, while in the elongation-limited regime ($\tau_{X,j} \ll 1$), the effective saturation constant is reduced by $\tau_{X,j}$, reflecting tighter RNAP binding when elongation is slow.
 
 %% ============================================================
-\subsection*{S2. Derivation of free machinery concentrations}
+\subsection*{S2. Free machinery concentrations and competitive allocation}
 
-\subsubsection*{S2.1. RNAP balance for multiple competing genes}
-Consider $\mathcal{N}$ genes competing for a shared pool of RNAP with total concentration $R_{X,T}$. At any time, RNAP is either free or sequestered in closed or open complexes with one of the $\mathcal{N}$ genes:
+Consider $\mathcal{N}$ genes competing for a shared pool of RNAP with total concentration $R_{X,T}$. At any time, RNAP is either free or sequestered in closed or open complexes:
 \begin{equation}
 R_{X,T} = R_X + \sum_{j=1}^{\mathcal{N}} \left[(\mathcal{G}_j : R_X)_C + (\mathcal{G}_j : R_X)_O\right]
 \label{eq:RNAP_balance}
 \end{equation}
-Substituting the steady-state expressions (Eqns.~\ref{eq:CC_ss}--\ref{eq:OC_combined}):
+Substituting the steady-state expressions (Eqns.~\ref{eq:CC_ss}--\ref{eq:OC_ss}) and factoring out $R_X$:
 \begin{equation}
-R_{X,T} = R_X + \sum_{j=1}^{\mathcal{N}} K_{X,j}^{-1}\,\mathcal{G}_j\,R_X\,(1 + \tau_{X,j}^{-1})
-= R_X\left[1 + \sum_{j=1}^{\mathcal{N}} \frac{(1 + \tau_{X,j}^{-1})\,\mathcal{G}_j}{K_{X,j}}\right]
+R_{X,T} = R_X\left[1 + \sum_{j=1}^{\mathcal{N}} \frac{(1 + \tau_{X,j}^{-1})\,\mathcal{G}_j}{K_{X,j}}\right]
 \label{eq:RNAP_balance_expanded}
 \end{equation}
-Solving for the free RNAP concentration:
+Solving for the free RNAP concentration yields:
 \begin{equation}
 \boxed{R_X = \frac{R_{X,T}}{1 + \displaystyle\sum_{j=1}^{\mathcal{N}} \frac{(\tau_{X,j} + 1)\,\mathcal{G}_j}{\tau_{X,j}\,K_{X,j}}}}
 \label{eq:RX_free}
 \end{equation}
-This expression shows that free RNAP decreases as more genes compete for the shared pool. Each gene $j$ sequesters RNAP in proportion to its concentration $\mathcal{G}_j$, its affinity $K_{X,j}^{-1}$, and the factor $(\tau_{X,j}+1)/\tau_{X,j}$ which accounts for RNAP trapped in both closed and open complexes.
-
-\subsubsection*{S2.2. Free ribosome concentration}
-By identical reasoning, the free ribosome concentration is:
+Each gene $j$ sequesters RNAP in proportion to its concentration $\mathcal{G}_j$, its affinity $K_{X,j}^{-1}$, and the factor $(\tau_{X,j}+1)/\tau_{X,j}$ which accounts for RNAP trapped in both closed and open complexes. By identical reasoning, the free ribosome concentration is:
 \begin{equation}
 \boxed{R_L = \frac{R_{L,T}}{1 + \displaystyle\sum_{j=1}^{\mathcal{N}} \frac{(\tau_{L,j} + 1)\,m_j}{\tau_{L,j}\,K_{L,j}}}}
 \label{eq:RL_free}
 \end{equation}
 where $m_j$ is the mRNA concentration of gene $j$, which varies dynamically. Thus $R_X$ is constant in time (since gene concentrations are fixed for linear DNA), while $R_L$ changes as mRNA levels evolve.
 
-\subsubsection*{S2.3. Single-gene rate expression}
-For a single gene, substituting Eqn.~\ref{eq:RX_free} into Eqn.~\ref{eq:rX_general} and simplifying gives the closed-form transcription rate:
-\begin{equation}
-r_{X,j} = k_{E,j}^X\,R_{X,T}\left(\frac{\mathcal{G}_j}{\tau_{X,j}\,K_{X,j} + (1 + \tau_{X,j})\,\mathcal{G}_j}\right)
-\label{eq:rX_single}
-\end{equation}
-To verify: from Eqn.~\ref{eq:rX_general}, $r_{X,j} = k_{E,j}^X\,\mathcal{G}_j\,R_X / (\tau_{X,j}\,K_{X,j})$. For a single gene, Eqn.~\ref{eq:RX_free} gives $R_X = R_{X,T}\,\tau_{X,j}\,K_{X,j} / [\tau_{X,j}\,K_{X,j} + (\tau_{X,j}+1)\,\mathcal{G}_j]$. Substituting and canceling $\tau_{X,j}\,K_{X,j}$ yields Eqn.~\ref{eq:rX_single}. Defining the maximum rate $V_{X,j}^{\max} \equiv R_{X,T}\,({\dot{v}_X}/{l_{G,j}}) = k_{E,j}^X\,R_{X,T}$, this can be written as:
+For a single gene, substituting Eqn.~\ref{eq:RX_free} into Eqn.~\ref{eq:rX_general} gives $R_X = R_{X,T}\,\tau_{X,j}\,K_{X,j} / [\tau_{X,j}\,K_{X,j} + (\tau_{X,j}+1)\,\mathcal{G}_j]$. After substitution and cancellation of $\tau_{X,j}\,K_{X,j}$, the transcription rate simplifies to:
 \begin{equation}
 r_{X,j} = V_{X,j}^{\max}\left(\frac{\mathcal{G}_j}{\tau_{X,j}\,K_{X,j} + (1 + \tau_{X,j})\,\mathcal{G}_j}\right)
 \label{eq:rX_Vmax}
 \end{equation}
-which is the form presented in the main text.
+where $V_{X,j}^{\max} \equiv k_{E,j}^X\,R_{X,T} = R_{X,T}\,\dot{v}_X/l_{G,j}$ is the maximum transcription rate. This is the form presented in the main text.
 
-\subsubsection*{S2.4. Multi-gene competitive allocation}
-For multiple genes competing for the same RNAP pool, we define the allocation fraction:
-\begin{equation}
-f_{X,j} \equiv \frac{\mathcal{G}_j}{\tau_{X,j}\,K_{X,j} + (1 + \tau_{X,j})\,\mathcal{G}_j}
-\label{eq:fX_def}
-\end{equation}
-and the free RNAP as $R_{X,\text{free}} = R_{X,T}/(1 + \sum_j f_{X,j})$. The transcription rate for gene $j$ in the multi-gene system is then:
+For multiple genes, we define the allocation fraction $f_{X,j} \equiv \mathcal{G}_j/[\tau_{X,j}\,K_{X,j} + (1 + \tau_{X,j})\,\mathcal{G}_j]$ and write the free RNAP as $R_{X,\text{free}} = R_{X,T}/(1 + \sum_j f_{X,j})$. The transcription rate for gene $j$ in the multi-gene system is then:
 \begin{equation}
 r_{X,j} = R_{X,\text{free}} \cdot k_{E,j}^X \cdot f_{X,j}
 \label{eq:rX_with_f}
@@ -154,64 +96,38 @@ or equivalently, $r_{X,j} = V_{X,j}^{\max}\,f_{X,j}$ where now $V_{X,j}^{\max} =
 %% ============================================================
 \subsection*{S3. Statistical thermodynamic derivation of the transcription control function}
 
-\subsubsection*{S3.1. Promoter microstates and the partition function}
 We model transcriptional regulation using the statistical thermodynamic framework developed by Ackers et al.\ \cite{ackers1982quantitative} and adapted for synthetic circuits by Moon et al.\ \cite{moon2012genetic}. The central idea is that the promoter region of gene $j$ can exist in a finite number of discrete microscopic configurations (microstates), each corresponding to a different combination of bound transcription factors and RNA polymerase. At thermal equilibrium, the probability of finding the promoter in microstate $s$ is given by the Boltzmann distribution:
 \begin{equation}
 p_s = \frac{W_s\,g_s(\mathbf{P})}{\displaystyle\sum_{s' \in \mathcal{C}_j} W_{s'}\,g_{s'}(\mathbf{P})}
 \label{eq:p_microstate}
 \end{equation}
-where the sum is over all possible configurations $\mathcal{C}_j$ of promoter $j$, and:
-\begin{itemize}
-\item $W_s = \exp(-\epsilon_s / \kB)$ is the Boltzmann weight (dimensionless) for configuration $s$, determined by the pseudo-energy $\epsilon_s$ of that configuration relative to a reference state (the empty promoter, $\epsilon_0 = 0$, $W_0 = 1$).
-\item $g_s(\mathbf{P})$ is a binding function that depends on the concentrations of the relevant transcriptional regulators $\mathbf{P}$. For a configuration in which regulator $i$ is bound, $g_s$ includes a Hill-type occupancy term; for the empty or RNAP-only states, $g_s = 1$.
-\end{itemize}
-
-\subsubsection*{S3.2. Control function as probability of productive configurations}
-The transcription control function $\bar{u}_j$ is defined as the probability that the promoter is in a configuration that leads to productive transcription (i.e., RNAP is bound and positioned to initiate):
+where the sum is over all possible configurations $\mathcal{C}_j$ of promoter $j$. Here $W_s = \exp(-\epsilon_s / \kB)$ is the Boltzmann weight for configuration $s$, determined by the pseudo-energy $\epsilon_s$ relative to a reference state (the empty promoter, $\epsilon_0 = 0$, $W_0 = 1$), and $g_s(\mathbf{P})$ is a binding function that depends on the concentrations of the relevant transcriptional regulators $\mathbf{P}$. For configurations in which a regulator is bound, $g_s$ includes a Hill-type occupancy term; for the empty or RNAP-only states, $g_s = 1$. A strongly negative $\epsilon_s$ (large $W_s$) indicates a thermodynamically favorable binding interaction, while a positive $\epsilon_s$ indicates an unfavorable configuration. The transcription control function $\bar{u}_j$ is defined as the probability that the promoter is in a configuration that leads to productive transcription:
 \begin{equation}
 \boxed{\bar{u}_j = \frac{\displaystyle\sum_{s \in \chi_j} W_s\,g_s(\mathbf{P})}{\displaystyle\sum_{s \in \mathcal{C}_j} W_s\,g_s(\mathbf{P})}}
 \label{eq:u_general}
 \end{equation}
-where $\chi_j \subseteq \mathcal{C}_j$ is the subset of configurations that are transcriptionally active (i.e., lead to expression). The value $\bar{u}_j \in [0, 1]$ represents the fraction of time the promoter spends in a productive state, and directly modulates the transcription rate: $\dot{m}_j \propto r_{X,j}\,\bar{u}_j$.
+where $\chi_j \subseteq \mathcal{C}_j$ is the subset of transcriptionally active configurations. The value $\bar{u}_j \in [0, 1]$ represents the fraction of time the promoter spends in a productive state and directly modulates the transcription rate.
 
-The pseudo-energies $\epsilon_s$ encode the thermodynamic favorability of each configuration. A strongly negative $\epsilon_s$ (large $W_s$) indicates a highly favorable binding interaction; a positive $\epsilon_s$ indicates an unfavorable configuration. These pseudo-energies are model parameters estimated from data.
-
-\subsubsection*{S3.3. Application to the gluconate sensor circuit}
-The circuit contains three genes, each with a distinct promoter architecture:
-
-\paragraph{P70 promoter (GntR gene).} The P70 promoter can exist in three states: (i) empty, (ii) core RNAP bound (without $\sigma_{70}$), or (iii) holoenzyme ($\sigma_{70}$-RNAP) bound. Both RNAP-bound states are productive. The partition function and control function are:
+The gluconate sensor circuit contains three genes, each with a distinct promoter architecture. The P70 promoter driving GntR can exist in three states: (i) empty, (ii) core RNAP bound (without $\sigma_{70}$), or (iii) holoenzyme ($\sigma_{70}$-RNAP) bound. Both RNAP-bound states are productive, giving:
 \begin{equation}
 \bar{u}_{\GntR} = \frac{W_{\GntR,\text{cRNAP}} + W_{\GntR,\sigma_{70}}\,b_{\GntR,\sigma_{70}}}{1 + W_{\GntR,\text{cRNAP}} + W_{\GntR,\sigma_{70}}\,b_{\GntR,\sigma_{70}}}
 \label{eq:u_GntR}
 \end{equation}
-where $W_{\GntR,\text{cRNAP}} = \exp(-\epsilon_{\GntR,\text{cRNAP}}/\kB)$ and $W_{\GntR,\sigma_{70}} = \exp(-\epsilon_{\GntR,\sigma_{70}}/\kB)$ are Boltzmann weights for core RNAP and holoenzyme binding, respectively, and:
-\begin{equation}
-b_{\GntR,\sigma_{70}} = \frac{[\sigma_{70}]^{n_{\GntR,\sigma_{70}}}}{K_{\GntR,\sigma_{70}}^{n_{\GntR,\sigma_{70}}} + [\sigma_{70}]^{n_{\GntR,\sigma_{70}}}}
-\label{eq:b_GntR_sigma}
-\end{equation}
-is a Hill function describing the fractional occupancy of $\sigma_{70}$ on the holoenzyme.
+where $W_{\GntR,\text{cRNAP}} = \exp(-\epsilon_{\GntR,\text{cRNAP}}/\kB)$ and $W_{\GntR,\sigma_{70}} = \exp(-\epsilon_{\GntR,\sigma_{70}}/\kB)$ are Boltzmann weights for core RNAP and holoenzyme binding, respectively, and $b_{\GntR,\sigma_{70}} = [\sigma_{70}]^{n}/({K^{n} + [\sigma_{70}]^{n}})$ is a Hill function describing the fractional occupancy of $\sigma_{70}$ on the holoenzyme.
 
-\paragraph{Modified P70 promoter (Venus gene).} The mP70 promoter includes a GntR operator between the $-35$ and $-10$ regions. It can exist in four states: (i) empty, (ii) core RNAP bound, (iii) holoenzyme bound, or (iv) GntR repressor bound to the operator. The GntR-bound state is \textit{not} productive. D-gluconate relieves repression by binding GntR and preventing it from occupying the operator:
+The modified P70 promoter (mP70) driving Venus includes a GntR operator between the $-35$ and $-10$ regions, adding a fourth state in which the GntR repressor is bound to the operator. This state is \textit{not} productive, so GntR occupancy reduces $\bar{u}_{\Venus}$:
 \begin{equation}
 \bar{u}_{\Venus} = \frac{W_{\Venus,\text{cRNAP}} + W_{\Venus,\sigma_{70}}\,b_{\Venus,\sigma_{70}}}{1 + W_{\Venus,\text{cRNAP}} + W_{\Venus,\sigma_{70}}\,b_{\Venus,\sigma_{70}} + W_{\Venus,\GntR}\,b_{\Venus,\GntR}}
 \label{eq:u_Venus}
 \end{equation}
-The GntR repression term in the denominator reduces $\bar{u}_{\Venus}$ when active (unliganded) GntR is present. The effective GntR concentration available for repression depends on gluconate binding:
+D-gluconate relieves repression by binding GntR and preventing it from occupying the operator. The effective GntR concentration available for repression is $[\GntR]_{\text{eff}} = (1 - f_{\text{bound}})\,[\GntR]_{\text{total}}$, where:
 \begin{equation}
-[\GntR]_{\text{eff}} = (1 - f_{\text{bound}})\,[\GntR]_{\text{total}}, \qquad f_{\text{bound}} = \frac{[\text{gluconate}]^{n_{\text{gluc}}}}{[\text{gluconate}]^{n_{\text{gluc}}} + K_{\text{gluc}}^{n_{\text{gluc}}}}
+f_{\text{bound}} = \frac{[\text{gluconate}]^{n_{\text{gluc}}}}{[\text{gluconate}]^{n_{\text{gluc}}} + K_{\text{gluc}}^{n_{\text{gluc}}}}
 \label{eq:gluconate_binding}
 \end{equation}
-where $f_{\text{bound}}$ is the fraction of GntR bound to D-gluconate (and therefore unable to repress), $K_{\text{gluc}}$ is the dissociation constant, and $n_{\text{gluc}}$ is the Hill coefficient for cooperative gluconate binding to the GntR dimer. At saturating gluconate ($f_{\text{bound}} \to 1$), $[\GntR]_{\text{eff}} \to 0$ and repression is fully relieved.
+is the fraction of GntR bound to D-gluconate (and therefore unable to repress), $K_{\text{gluc}}$ is the dissociation constant, and $n_{\text{gluc}}$ is the Hill coefficient for cooperative gluconate binding to the GntR dimer. At saturating gluconate ($f_{\text{bound}} \to 1$), repression is fully relieved. Finally, since $\sigma_{70}$ is supplied exogenously as protein and is not encoded on a gene in the circuit, its constitutive promoter control function is $\bar{u}_{\sigma_{70}} = W_{\sigma_{70},\text{RNAP}}/(1 + W_{\sigma_{70},\text{RNAP}})$ with $W_{\sigma_{70},\text{RNAP}} = \exp(-0.5)$ fixed.
 
-\paragraph{Constitutive promoter ($\sigma_{70}$ gene).} Since $\sigma_{70}$ is supplied exogenously as protein (not encoded on a gene in the circuit), its ``gene'' concentration is zero and no mRNA is produced. However, for completeness, the constitutive promoter control function would be:
-\begin{equation}
-\bar{u}_{\sigma_{70}} = \frac{W_{\sigma_{70},\text{RNAP}}}{1 + W_{\sigma_{70},\text{RNAP}}}
-\label{eq:u_sigma70}
-\end{equation}
-with $W_{\sigma_{70},\text{RNAP}} = \exp(-0.5)$ fixed.
-
-\subsubsection*{S3.4. Connection between microstates and macroscopic control}
-The partition function formalism provides a principled bridge between molecular-level binding events and macroscopic gene expression rates. Each pseudo-energy $\epsilon_s$ encodes the net free energy change for a specific promoter configuration relative to the empty state, integrating contributions from protein-DNA contacts, conformational changes, and steric effects. The Hill functions $b(\cdot)$ capture the concentration dependence of regulator occupancy, with the Hill coefficient $n$ reflecting apparent cooperativity (which may arise from true cooperative binding, conformational switching, or other mechanisms). The resulting control function $\bar{u}_j$ is a smooth, bounded function that modulates the kinetic rate $r_{X,j}$ at each time step, coupling the thermodynamic state of the promoter to the dynamic mass balance equations.
+The partition function formalism provides a principled bridge between molecular-level binding events and macroscopic gene expression rates. Each pseudo-energy $\epsilon_s$ encodes the net free energy change for a specific promoter configuration relative to the empty state, integrating contributions from protein-DNA contacts, conformational changes, and steric effects. The resulting control function $\bar{u}_j$ is a smooth, bounded function that modulates the kinetic rate $r_{X,j}$ at each time step, coupling the thermodynamic state of the promoter to the dynamic mass balance equations.
 
 %% ============================================================
 \subsection*{S4. Consumable resource depletion}
@@ -226,26 +142,17 @@ where $\alpha_X$ and $\alpha_L$ are consumption rate constants (units: inverse f
 %% ============================================================
 \subsection*{S5. Complete model equations}
 
-The full model consists of 11 ordinary differential equations. Gene concentrations are constant (linear DNA, no replication):
-\begin{equation}
-\frac{d\mathcal{G}_j}{dt} = 0 \qquad j = 1, 2, 3
-\end{equation}
-
-The mRNA balances couple transcription (modulated by promoter control and resource availability) with first-order degradation:
+The full model consists of 11 ordinary differential equations. Gene concentrations are constant (linear DNA, no replication): $d\mathcal{G}_j/dt = 0$ for $j = 1, 2, 3$. The mRNA balances couple transcription (modulated by promoter control and resource availability) with first-order degradation:
 \begin{equation}
 \frac{dm_j}{dt} = r_{X,j}\,\bar{u}_j\,\epsilon_X - \theta_{m,j}\,m_j \qquad j = 1, 2, 3
 \label{eq:mRNA_balance}
 \end{equation}
-where $\theta_{m,j} = \delta_{m,j}\,\ln 2 / t_{1/2,m}$ is the effective degradation rate constant, $\delta_{m,j}$ is a gene-specific modifier, and $t_{1/2,m}$ is the characteristic mRNA half-life.
-
-The protein balances have an analogous structure:
+where $\theta_{m,j} = \delta_{m,j}\,\ln 2 / t_{1/2,m}$ is the effective degradation rate constant, $\delta_{m,j}$ is a gene-specific modifier, and $t_{1/2,m}$ is the characteristic mRNA half-life. The protein balances have an analogous structure:
 \begin{equation}
 \frac{dp_j}{dt} = r_{L,j}\,\epsilon_L - \theta_{p,j}\,p_j \qquad j = 1, 2, 3
 \label{eq:protein_balance}
 \end{equation}
-where $\theta_{p,j} = \delta_{p,j}\,\ln 2 / t_{1/2,p}$.
-
-Together with the resource depletion equations (Eqns.~\ref{eq:epsX}--\ref{eq:epsL}), the algebraic expressions for transcription control (Eqns.~\ref{eq:u_GntR}--\ref{eq:u_sigma70}), machinery allocation (Eqns.~\ref{eq:RX_free}--\ref{eq:RL_free}), and kinetic rates (Eqns.~\ref{eq:rX_general}, \ref{eq:rL_general}), this defines a closed system of 11 ODEs with 25 estimated parameters.
+where $\theta_{p,j} = \delta_{p,j}\,\ln 2 / t_{1/2,p}$. Together with the resource depletion equations (Eqns.~\ref{eq:epsX}--\ref{eq:epsL}), the algebraic expressions for transcription control (Eqns.~\ref{eq:u_GntR}--\ref{eq:u_Venus}), machinery allocation (Eqns.~\ref{eq:RX_free}--\ref{eq:RL_free}), and kinetic rates (Eqns.~\ref{eq:rX_general}, \ref{eq:rL_general}), this defines a closed system of 11 ODEs with 25 estimated parameters.
 
 \bibliographystyle{plos2009}
 \bibliography{References}
