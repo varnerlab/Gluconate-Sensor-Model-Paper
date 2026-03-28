@@ -54,14 +54,15 @@ if isfile(joinpath(RESULTS_DIR, "time_eval.dat"))
     scatter!(ax1, exp_data.mRNA_time, exp_data.mRNA_venus_mean .* 1000, color = DATA_COLOR, markersize = 10)
     text!(ax1, 0.05, 0.95, text = "A", font = :bold, fontsize = 18, space = :relative, align = (:left, :top))
 
-    # B: Venus protein (μM)
+    # B: Venus protein (μM) — thin data to every 12th point (~1 hr), model on top
     ax2 = Axis(fig[1, 2], xlabel = "Time (hr)", ylabel = "[Venus] (μM)")
+    thin = 1:12:length(exp_data.protein_time)
+    errorbars!(ax2, exp_data.protein_time[thin], exp_data.protein_venus_mean[thin], exp_data.protein_venus_std[thin],
+               color = DATA_COLOR, whiskerwidth = 5, linewidth = 1.5)
+    scatter!(ax2, exp_data.protein_time[thin], exp_data.protein_venus_mean[thin], color = DATA_COLOR, markersize = 8)
     μ, σ = es(protein_Venus)
     band!(ax2, t_eval, max.(μ .- 1.96σ, 0), μ .+ 1.96σ, color = BAND_COLOR)
     lines!(ax2, t_eval, μ, color = LINE_COLOR, linewidth = LINE_WIDTH)
-    errorbars!(ax2, exp_data.protein_time, exp_data.protein_venus_mean, exp_data.protein_venus_std,
-               color = DATA_COLOR, whiskerwidth = 4, linewidth = 1)
-    scatter!(ax2, exp_data.protein_time, exp_data.protein_venus_mean, color = DATA_COLOR, markersize = 6)
     text!(ax2, 0.05, 0.95, text = "B", font = :bold, fontsize = 18, space = :relative, align = (:left, :top))
 
     # C: GntR mRNA (nM)

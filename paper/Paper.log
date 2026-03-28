@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  27 MAR 2026 13:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  28 MAR 2026 07:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -508,36 +508,38 @@ e-mented in Pare-toEnsem-bles.jl
 
 [26]
 
-[27
+[27]
+
+[28
 
 ]
 
-[28] (./Paper.bbl
+[29] (./Paper.bbl
 
-[29
+[30
 
 ]
-
-[30]
 
 [31]
 
 [32]
 
-[33])
+[33]
 
-[34]
-<./figs/fig-0-circuit.pdf, id=125, 219.82124pt x 149.55875pt>
+[34])
+
+[35]
+<./figs/fig-0-circuit.pdf, id=128, 219.82124pt x 149.55875pt>
 File: ./figs/fig-0-circuit.pdf Graphic file (type pdf)
 <use ./figs/fig-0-circuit.pdf>
 Package pdftex.def Info: ./figs/fig-0-circuit.pdf  used on input line 284.
 (pdftex.def)             Requested size: 211.38832pt x 143.82579pt.
 
 
-[35
+[36
 
  <./figs/fig-0-circuit.pdf>]
-<./figs/fig-1-three-panel.pdf, id=150, 369.38pt x 903.375pt>
+<./figs/fig-1-three-panel.pdf, id=154, 369.38pt x 903.375pt>
 File: ./figs/fig-1-three-panel.pdf Graphic file (type pdf)
 <use ./figs/fig-1-three-panel.pdf>
 Package pdftex.def Info: ./figs/fig-1-three-panel.pdf  used on input line 293.
@@ -551,8 +553,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[36 <./figs/fig-1-three-panel.pdf>]
-<./figs/fig_model_training.pdf, id=168, 677.53125pt x 526.96875pt>
+[37 <./figs/fig-1-three-panel.pdf>]
+<./figs/fig_model_training.pdf, id=171, 677.53125pt x 526.96875pt>
 File: ./figs/fig_model_training.pdf Graphic file (type pdf)
 <use ./figs/fig_model_training.pdf>
 Package pdftex.def Info: ./figs/fig_model_training.pdf  used on input line 306.
@@ -560,11 +562,11 @@ Package pdftex.def Info: ./figs/fig_model_training.pdf  used on input line 306.
 (pdftex.def)             Requested size: 469.75502pt x 365.37782pt.
 
 
-[37
+[38
 
 
  <./figs/fig_model_training.pdf>]
-<./figs/fig_resource_depletion.pdf, id=196, 376.40625pt x 301.125pt>
+<./figs/fig_resource_depletion.pdf, id=199, 376.40625pt x 301.125pt>
 File: ./figs/fig_resource_depletion.pdf Graphic file (type pdf)
 <use ./figs/fig_resource_depletion.pdf>
 Package pdftex.def Info: ./figs/fig_resource_depletion.pdf  used on input line 
@@ -572,24 +574,24 @@ Package pdftex.def Info: ./figs/fig_resource_depletion.pdf  used on input line
 (pdftex.def)             Requested size: 281.85587pt x 225.49857pt.
 
 
-[38
+[39
 
  <./figs/fig_resource_depletion.pdf>]
-<./figs/fig_dose_response.pdf, id=216, 413.545pt x 339.2675pt>
+<./figs/fig_dose_response.pdf, id=219, 413.545pt x 339.2675pt>
 File: ./figs/fig_dose_response.pdf Graphic file (type pdf)
 <use ./figs/fig_dose_response.pdf>
 Package pdftex.def Info: ./figs/fig_dose_response.pdf  used on input line 329.
 (pdftex.def)             Requested size: 281.85587pt x 231.23723pt.
 
 
-[39
+[40
 
  <./figs/fig_dose_response.pdf>]
 
-[40
+[41
 
 ]
-<./figs/fig_sensitivity.pdf, id=240, 376.40625pt x 677.53125pt>
+<./figs/fig_sensitivity.pdf, id=243, 376.40625pt x 677.53125pt>
 File: ./figs/fig_sensitivity.pdf Graphic file (type pdf)
 <use ./figs/fig_sensitivity.pdf>
 Package pdftex.def Info: ./figs/fig_sensitivity.pdf  used on input line 359.
@@ -603,8 +605,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[41 <./figs/fig_sensitivity.pdf>]
-<./figs/fig_correlation_heatmap.pdf, id=271, 602.25pt x 526.96875pt>
+[42 <./figs/fig_sensitivity.pdf>]
+<./figs/fig_correlation_heatmap.pdf, id=275, 602.25pt x 526.96875pt>
 File: ./figs/fig_correlation_heatmap.pdf Graphic file (type pdf)
 <use ./figs/fig_correlation_heatmap.pdf>
 Package pdftex.def Info: ./figs/fig_correlation_heatmap.pdf  used on input line
@@ -612,15 +614,15 @@ Package pdftex.def Info: ./figs/fig_correlation_heatmap.pdf  used on input line
 (pdftex.def)             Requested size: 375.80544pt x 328.84003pt.
 
 
-[42
+[43
 
 
  <./figs/fig_correlation_heatmap.pdf>]
 
-[43
+[44
 
 ]
-<./figs/fig-S1-resource_limitation_Pseudomonas.pdf, id=303, 361.35pt x 289.08pt
+<./figs/fig-S1-resource_limitation_Pseudomonas.pdf, id=306, 361.35pt x 289.08pt
 >
 File: ./figs/fig-S1-resource_limitation_Pseudomonas.pdf Graphic file (type pdf)
 
@@ -632,13 +634,17 @@ LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 443.
 
 
-[44
+[45
 
  <./figs/fig-S1-resource_limitation_Pseudomonas.pdf>] (./Paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  6541 strings out of 473190
@@ -666,10 +672,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2025/t
 exmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2025/texmf-di
 st/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2025/texmf-dist/font
 s/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Paper.pdf (45 pages, 719744 bytes).
+Output written on Paper.pdf (46 pages, 711503 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
+ 435 PDF objects out of 1000 (max. 8388607)
+ 263 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
