@@ -33,3 +33,19 @@ code/results/*.jld2
 code/results/figures/
 !code/results/.gitkeep
 paper/cover_letter.*
+
+# Internal working directories
+cache/
+sandbox/
+preprint/
+
+# LaTeX build artifacts
+paper/*.out
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk
+
+# Misc
+code/texput.log
+*.DS_Store
+paper/synthetic_reviews.md
