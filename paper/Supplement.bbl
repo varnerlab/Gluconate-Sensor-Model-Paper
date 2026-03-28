@@ -36,4 +36,16 @@ Moon TS, Lou C, Tamsir A, Stanton BC, Voigt CA (2012) Genetic programs
 \newblock Nature 491: 249--253.
 \bibAnnoteFile{moon2012genetic}
 
+\bibitem{karzbrun2011coarse}
+Karzbrun E, Shin J, Bar-Ziv RH, Noireaux V (2011) Coarse-grained dynamics of
+  protein synthesis in a cell-free system.
+\newblock Physical review letters 106: 048104.
+\bibAnnoteFile{karzbrun2011coarse}
+
+\bibitem{stogbauer2012experiment}
+St{\"o}gbauer T, Windhager L, Zimmer R, R{\"a}dler JO (2012) Experiment and
+  mathematical modeling of gene expression dynamics in a cell-free system.
+\newblock Integrative Biology 4: 494--501.
+\bibAnnoteFile{stogbauer2012experiment}
+
 \end{thebibliography}
