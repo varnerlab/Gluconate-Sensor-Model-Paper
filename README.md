@@ -1,8 +1,8 @@
-# Mechanistic Resource Competition Modeling of a Cell-Free Gluconate Biosensor
+# Resource Competition Modeling of a Cell-Free Gluconate Biosensor
 
 This repository contains the model code, experimental data, parameter estimation scripts, and manuscript source for:
 
-> **Mechanistic Resource Competition Modeling of a Cell-Free Gluconate Biosensor**
+> **Resource Competition Modeling of a Cell-Free Gluconate Biosensor**
 > A. Adhikari, A. Mukherjee, A. Nguyen, H. Lim, and J.D. Varner
 > *Frontiers in Bioengineering and Biotechnology* (submitted 2026)
 
@@ -166,7 +166,7 @@ If you use this code or data, please cite:
 
 ```bibtex
 @article{adhikari2026gluconate,
-  title={Mechanistic Resource Competition Modeling of a Cell-Free Gluconate Biosensor},
+  title={Resource Competition Modeling of a Cell-Free Gluconate Biosensor},
   author={Adhikari, Abhinav and Mukherjee, Aniruddha and Nguyen, Andrew and Lim, Ha Eun and Varner, Jeffrey D},
   journal={Frontiers in Bioengineering and Biotechnology},
   year={2026}

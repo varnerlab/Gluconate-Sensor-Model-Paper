@@ -248,6 +248,12 @@ Bintu L, Buchler NE, Garcia HG, Gerland U, Hwa T, et~al. (2005) Transcriptional
 \newblock Current opinion in genetics \& development 15: 116--124.
 \bibAnnoteFile{bintu2005transcriptional}
 
+\bibitem{Varner:2026aa}
+Varner JD (2026) {ParetoEnsembles.jl}: A {Julia} package for multiobjective
+  parameter estimation using {Pareto} optimal ensemble techniques.
+\newblock arXiv preprint arXiv:260329986 .
+\bibAnnoteFile{Varner:2026aa}
+
 \bibitem{rackauckas2017differentialequations}
 Rackauckas C, Nie Q (2017) Differentialequations.jl--a performant and
   feature-rich ecosystem for solving differential equations in julia.
