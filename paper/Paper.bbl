@@ -339,4 +339,16 @@ Garamella J, Marshall R, Rustad M, Noireaux V (2016) The all e. coli tx-tl
 \newblock ACS synthetic biology 5: 344--355.
 \bibAnnoteFile{garamella2016all}
 
+\bibitem{moon2012genetic}
+Moon TS, Lou C, Tamsir A, Stanton BC, Voigt CA (2012) Genetic programs
+  constructed from layered logic gates in single cells.
+\newblock Nature 491: 249--253.
+\bibAnnoteFile{moon2012genetic}
+
+\bibitem{ackers1982quantitative}
+Ackers GK, Johnson AD, Shea MA (1982) Quantitative model for gene regulation by
+  lambda phage repressor.
+\newblock Proceedings of the National Academy of Sciences 79: 1129--1133.
+\bibAnnoteFile{ackers1982quantitative}
+
 \end{thebibliography}

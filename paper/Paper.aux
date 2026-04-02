@@ -108,6 +108,8 @@
 \bibcite{jurado2023chemical}{{50}{}{{}}{{}}}
 \bibcite{Vilkhovoy:2019aa}{{51}{}{{}}{{}}}
 \bibcite{garamella2016all}{{52}{}{{}}{{}}}
+\bibcite{moon2012genetic}{{53}{}{{}}{{}}}
+\bibcite{ackers1982quantitative}{{54}{}{{}}{{}}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Genetic circuit architecture used in this study. The circles represent the promoters for each transcription unit. mP70 is the modified P70 promoter with the GntR operator included. The circuit components were added to the reaction as linear DNA. D-Gluconate was added as a de-repressor at the start of the reaction.}}{36}{}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:circuit}{{1}{36}{}{}{}}
@@ -119,12 +121,12 @@
 \newlabel{fig:resource_depletion}{{4}{39}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Model prediction versus experimental measurements for the dose-response study. Linear DNA used were: mP70-Venus (7 nM), P70-GntR (10 nM). D-gluconate concentration was varied from 0.0001 to 20 mM. Black circles represent Venus protein measurements at the endpoint of the experiment (12 h). Error bars represent standard errors across at least three replicates. The black line represents the ensemble mean of the model prediction, and the shaded region represents the 95\% confidence estimate across the parameter ensemble ($N = 78$). All model parameters were fixed at the values estimated from the 10 mM and 0 mM D-gluconate training conditions; only D-gluconate concentration was varied.}}{40}{}\protected@file@percent }
 \newlabel{fig:dose_response}{{5}{40}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Synthetic fed-batch supplementation analysis. At $t = 3$ hours, the transcriptional ($\epsilon _X$) or translational ($\epsilon _L$) resource fraction was replenished by a supplementation fraction $\phi $. Venus protein concentration at 12 hours (ensemble mean $\pm $ standard deviation, $N = 78$) and fold-change relative to the unsupplemented control are shown. Paired $t$-statistics test the null hypothesis of no difference from the control; all values with $\phi > 0$ were statistically significant ($p < 10^{-10}$), but the $\epsilon _L$ effect was biologically negligible (less than 0.3\%).}}{41}{}\protected@file@percent }
-\newlabel{table:fedbatch}{{1}{41}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Global sensitivity analysis of the model parameters using the Morris method. The heatmap represents the normalized absolute mean elementary effect ($|\mu ^{*}|$) of each parameter on four model outputs: Venus mRNA at 6 hours, Venus protein at 12 hours, GntR mRNA at 6 hours, and GntR protein at 12 hours. Values were normalized per output to the range $[0,1]$ for visualization; darker colors indicate greater sensitivity. The resource consumption parameters $\alpha _X$ and $\alpha _L$ were the dominant parameters for all model outputs. Morris sensitivity coefficients were computed over 200 trajectories using parameter ranges derived from the ensemble distribution.}}{42}{}\protected@file@percent }
-\newlabel{fig:sensitivity}{{6}{42}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Spearman rank correlation matrix of the estimated model parameters across the ensemble ($N = 78$). Strong positive correlations (blue) and negative correlations (red) reveal parameter dependencies that reflect structural identifiability constraints. Notable correlated clusters include the translation time constants ($\tau _{\text  {protein,GntR}}$, $\tau _{\text  {protein,Venus}}$) and the translation saturation constant ($K_L$), which exhibited pairwise correlations $|\rho | > 0.82$, reflecting the well-known trade-off between Michaelis constant and time constant in enzyme kinetics. The mRNA degradation modifier for GntR was strongly anti-correlated with $\alpha _X$ ($\rho = -0.72$), indicating a compensatory relationship between mRNA stability and transcriptional resource depletion rate.}}{43}{}\protected@file@percent }
-\newlabel{fig:correlation}{{7}{43}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Global sensitivity analysis of the model parameters using the Morris method. The heatmap represents the normalized absolute mean elementary effect ($|\mu ^{*}|$) of each parameter on four model outputs: Venus mRNA at 6 hours, Venus protein at 12 hours, GntR mRNA at 6 hours, and GntR protein at 12 hours. Values were normalized per output to the range $[0,1]$ for visualization; darker colors indicate greater sensitivity. The resource consumption parameters $\alpha _X$ and $\alpha _L$ were the dominant parameters for all model outputs. Morris sensitivity coefficients were computed over 200 trajectories using parameter ranges derived from the ensemble distribution.}}{41}{}\protected@file@percent }
+\newlabel{fig:sensitivity}{{6}{41}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Spearman rank correlation matrix of the estimated model parameters across the ensemble ($N = 78$). Strong positive correlations (blue) and negative correlations (red) reveal parameter dependencies that reflect structural identifiability constraints. Notable correlated clusters include the translation time constants ($\tau _{\text  {protein,GntR}}$, $\tau _{\text  {protein,Venus}}$) and the translation saturation constant ($K_L$), which exhibited pairwise correlations $|\rho | > 0.82$, reflecting the well-known trade-off between Michaelis constant and time constant in enzyme kinetics. The mRNA degradation modifier for GntR was strongly anti-correlated with $\alpha _X$ ($\rho = -0.72$), indicating a compensatory relationship between mRNA stability and transcriptional resource depletion rate.}}{42}{}\protected@file@percent }
+\newlabel{fig:correlation}{{7}{42}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Synthetic fed-batch supplementation analysis. At $t = 3$ hours, the transcriptional ($\epsilon _X$) or translational ($\epsilon _L$) resource fraction was replenished by a supplementation fraction $\phi $. Venus protein concentration at 12 hours (ensemble mean $\pm $ standard deviation, $N = 78$) and fold-change relative to the unsupplemented control are shown. Paired $t$-statistics test the null hypothesis of no difference from the control; all values with $\phi > 0$ were statistically significant ($p < 10^{-10}$), but the $\epsilon _L$ effect was biologically negligible (less than 0.3\%).}}{43}{}\protected@file@percent }
+\newlabel{table:fedbatch}{{1}{43}{}{}{}}
 \citation{garamella2016all}
 \citation{garamella2016all}
 \citation{mcclure_1980}
@@ -132,11 +134,43 @@
 \citation{adhikari2020effective}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Estimated model parameters for the D-gluconate sensor circuit. Values represent the ensemble mean $\pm $ standard deviation across $N = 78$ parameter sets. The first group contains pseudo-energy parameters for promoter configurations, the second group contains binding and kinetic parameters, and the last two rows are the new resource consumption parameters introduced in this study.}}{44}{}\protected@file@percent }
 \newlabel{table:model-parameters}{{2}{44}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {S1}{\ignorespaces Venus protein levels measured for two cases: addition of \textit  {P.~aeruginosa} GntR gene and in the absence of GntR gene. Linear DNA used were: mP70-Venus (7 nM), P70-GntR (0 or 10 nM). The \textit  {P.~aeruginosa} GntR variant does not bind to the \textit  {E.~coli} GntR operator, serving as a control for resource competition effects.}}{S-45}{}\protected@file@percent }
-\newlabel{fig:S1}{{S1}{S-45}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {S2}{\ignorespaces Pairwise projections of the six-dimensional Pareto front. Grey points represent the 41,280 archive solutions with total error $< 100$ (out of 73,747 total); blue points represent the $N = 78$ filtered ensemble members. \textbf  {A}: Venus mRNA SSE versus Venus protein SSE. \textbf  {B}: Venus protein SSE at 10 mM versus no-GntR control. \textbf  {C}: Venus protein SSE at 10 mM versus 0 mM (repressed). \textbf  {D}: Venus mRNA SSE versus GntR mRNA SSE. The filtered ensemble occupies the corner of the Pareto front where all objectives are simultaneously minimized.}}{S-46}{}\protected@file@percent }
-\newlabel{fig:pareto_fronts}{{S2}{S-46}{}{}{}}
+\citation{moon2012genetic}
+\citation{mcclure_1980}
+\citation{adhikari2020effective}
+\newlabel{eq:step1}{{S1}{S-45}{}{}{}}
+\newlabel{eq:step2}{{S2}{S-45}{}{}{}}
+\newlabel{eq:step3}{{S3}{S-45}{}{}{}}
+\newlabel{eq:step4}{{S4}{S-45}{}{}{}}
+\newlabel{eq:dCC}{{S5}{S-45}{}{}{}}
+\newlabel{eq:dOC}{{S6}{S-45}{}{}{}}
+\citation{mcclure_1980}
+\newlabel{eq:CC_ss}{{S7}{S-46}{}{}{}}
+\newlabel{eq:OC_ss}{{S8}{S-46}{}{}{}}
+\newlabel{eq:rX_general}{{S9}{S-46}{}{}{}}
+\newlabel{eq:rL_general}{{S10}{S-46}{}{}{}}
+\newlabel{eq:RNAP_balance}{{S11}{S-47}{}{}{}}
+\newlabel{eq:RNAP_balance_expanded}{{S12}{S-47}{}{}{}}
+\newlabel{eq:RX_free}{{S13}{S-47}{}{}{}}
+\newlabel{eq:RL_free}{{S14}{S-48}{}{}{}}
+\newlabel{eq:rX_Vmax}{{S15}{S-48}{}{}{}}
+\newlabel{eq:rX_with_f}{{S16}{S-48}{}{}{}}
+\citation{ackers1982quantitative}
+\citation{moon2012genetic}
+\newlabel{eq:p_microstate}{{S17}{S-49}{}{}{}}
+\newlabel{eq:u_general}{{S18}{S-49}{}{}{}}
+\newlabel{eq:u_GntR}{{S19}{S-50}{}{}{}}
+\newlabel{eq:u_Venus}{{S20}{S-50}{}{}{}}
+\newlabel{eq:gluconate_binding}{{S21}{S-50}{}{}{}}
+\citation{karzbrun2011coarse,stogbauer2012experiment}
+\newlabel{eq:S-epsX}{{S22}{S-52}{}{}{}}
+\newlabel{eq:S-epsL}{{S23}{S-52}{}{}{}}
+\newlabel{eq:mRNA_balance}{{S24}{S-53}{}{}{}}
+\newlabel{eq:protein_balance}{{S25}{S-53}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S1}{\ignorespaces Venus protein levels measured for two cases: addition of \textit  {P.~aeruginosa} GntR gene and in the absence of GntR gene. Linear DNA used were: mP70-Venus (7 nM), P70-GntR (0 or 10 nM). The \textit  {P.~aeruginosa} GntR variant does not bind to the \textit  {E.~coli} GntR operator, serving as a control for resource competition effects.}}{S-54}{}\protected@file@percent }
+\newlabel{fig:S1}{{S1}{S-54}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {S2}{\ignorespaces Pairwise projections of the six-dimensional Pareto front. Grey points represent the 41,280 archive solutions with total error $< 100$ (out of 73,747 total); blue points represent the $N = 78$ filtered ensemble members. \textbf  {A}: Venus mRNA SSE versus Venus protein SSE. \textbf  {B}: Venus protein SSE at 10 mM versus no-GntR control. \textbf  {C}: Venus protein SSE at 10 mM versus 0 mM (repressed). \textbf  {D}: Venus mRNA SSE versus GntR mRNA SSE. The filtered ensemble occupies the corner of the Pareto front where all objectives are simultaneously minimized.}}{S-55}{}\protected@file@percent }
+\newlabel{fig:pareto_fronts}{{S2}{S-55}{}{}{}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{lof}{\contentsline {figure}{\numberline {S3}{\ignorespaces Marginal parameter distributions across the filtered ensemble ($N = 78$). Each panel shows the histogram for one of the 25 estimated parameters. Black vertical lines indicate the ensemble mean; red dashed lines indicate the parameter bounds (where visible within the axis range). Parameters with narrow, unimodal distributions (e.g., $K_{\text  {gluconate}}$, $n_{\text  {gluconate}}$, $\alpha _X$) are well-identified by the data, while parameters with broad distributions (e.g., $K_{\text  {Venus},\sigma _{70}}$, $\delta _{p,\text  {Venus}}$) or distributions piling against bounds (e.g., $\delta _{m,\text  {Venus}}$, $n_{\text  {Venus,GntR}}$) indicate structural identifiability limitations.}}{S-47}{}\protected@file@percent }
-\newlabel{fig:param_dist}{{S3}{S-47}{}{}{}}
-\gdef \@abspage@last{48}
+\@writefile{lof}{\contentsline {figure}{\numberline {S3}{\ignorespaces Marginal parameter distributions across the filtered ensemble ($N = 78$). Each panel shows the histogram for one of the 25 estimated parameters. Black vertical lines indicate the ensemble mean; red dashed lines indicate the parameter bounds (where visible within the axis range). Parameters with narrow, unimodal distributions (e.g., $K_{\text  {gluconate}}$, $n_{\text  {gluconate}}$, $\alpha _X$) are well-identified by the data, while parameters with broad distributions (e.g., $K_{\text  {Venus},\sigma _{70}}$, $\delta _{p,\text  {Venus}}$) or distributions piling against bounds (e.g., $\delta _{m,\text  {Venus}}$, $n_{\text  {Venus,GntR}}$) indicate structural identifiability limitations.}}{S-56}{}\protected@file@percent }
+\newlabel{fig:param_dist}{{S3}{S-56}{}{}{}}
+\gdef \@abspage@last{57}

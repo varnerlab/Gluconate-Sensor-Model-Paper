@@ -1,21 +1,4 @@
-\documentclass[12pt]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{booktabs}
-\usepackage{geometry}
-\geometry{margin=1in}
-\usepackage{natbib}
-
-\newcommand{\GntR}{\text{GntR}}
-\newcommand{\Venus}{\text{Venus}}
-\newcommand{\kB}{k_BT}
-
-\begin{document}
-
 \section*{Supplementary Material}
-\setcounter{equation}{0}
-\renewcommand{\theequation}{S\arabic{equation}}
-\setcounter{figure}{0}
-\renewcommand{\thefigure}{S\arabic{figure}}
 
 \subsection*{S1. Derivation of transcription and translation kinetic rate expressions}
 
@@ -136,12 +119,12 @@ A distinguishing feature of cell-free systems is that the small-molecule substra
 
 To address this limitation, we formulated a resource depletion model in which the rate of resource consumption is driven by the cumulative biosynthetic flux. We define two dimensionless state variables: $\epsilon_X(t) \in [0,1]$, representing the fractional availability of consumable resources that sustain transcription, and $\epsilon_L(t) \in [0,1]$, representing the fractional availability of consumable resources that sustain translation, with $\epsilon_X(0) = \epsilon_L(0) = 1$. The depletion dynamics are governed by:
 \begin{align}
-\frac{d\epsilon_X}{dt} &= -\alpha_X\left(\sum_{j=1}^{\mathcal{N}} l_{G,j}\,r_{X,j}\,\bar{u}_j\right)\epsilon_X \label{eq:epsX} \\
-\frac{d\epsilon_L}{dt} &= -\alpha_L\left(\sum_{j=1}^{\mathcal{N}} l_{P,j}\,r_{L,j}\right)\epsilon_L \label{eq:epsL}
+\frac{d\epsilon_X}{dt} &= -\alpha_X\left(\sum_{j=1}^{\mathcal{N}} l_{G,j}\,r_{X,j}\,\bar{u}_j\right)\epsilon_X \label{eq:S-epsX} \\
+\frac{d\epsilon_L}{dt} &= -\alpha_L\left(\sum_{j=1}^{\mathcal{N}} l_{P,j}\,r_{L,j}\right)\epsilon_L \label{eq:S-epsL}
 \end{align}
 where $\alpha_X$ and $\alpha_L$ are consumption rate constants with units of inverse flux, $l_{G,j}$ is the coding length of gene $j$ in nucleotides, and $l_{P,j}$ is the length of protein $j$ in amino acids. The summation terms represent the total biosynthetic flux: each gene's transcription rate $r_{X,j}\,\bar{u}_j$ is weighted by its coding length $l_{G,j}$, reflecting the stoichiometric requirement that longer transcripts consume more NTPs per molecule synthesized. Likewise, each translation rate $r_{L,j}$ is weighted by the protein length $l_{P,j}$, since longer polypeptides consume more amino acids and GTP equivalents per molecule.
 
-The multiplicative structure of Eqns.~\ref{eq:epsX}--\ref{eq:epsL} creates a natural feedback: as $\epsilon_X$ decreases, it attenuates the mRNA production terms in the balance equations (Eqn.~\ref{eq:mRNA_balance}), which reduces the transcription flux, which in turn slows further depletion of $\epsilon_X$. This self-limiting behavior produces the characteristic sigmoidal-to-saturating protein accumulation curves observed in cell-free reactions without requiring an externally imposed decay schedule. Importantly, the depletion rate depends on the \textit{actual} biosynthetic activity in the system: circuits with more genes, stronger promoters, or longer coding sequences will deplete resources faster, while less active circuits will deplete them more slowly. This load-dependent behavior is what distinguishes this formulation from empirical decay functions and enables the model to generalize across conditions with different gene dosages or circuit architectures.
+The multiplicative structure of Eqns.~\ref{eq:S-epsX}--\ref{eq:S-epsL} creates a natural feedback: as $\epsilon_X$ decreases, it attenuates the mRNA production terms in the balance equations (Eqn.~\ref{eq:mRNA_balance}), which reduces the transcription flux, which in turn slows further depletion of $\epsilon_X$. This self-limiting behavior produces the characteristic sigmoidal-to-saturating protein accumulation curves observed in cell-free reactions without requiring an externally imposed decay schedule. Importantly, the depletion rate depends on the \textit{actual} biosynthetic activity in the system: circuits with more genes, stronger promoters, or longer coding sequences will deplete resources faster, while less active circuits will deplete them more slowly. This load-dependent behavior is what distinguishes this formulation from empirical decay functions and enables the model to generalize across conditions with different gene dosages or circuit architectures.
 
 The separation of resource depletion into distinct transcriptional ($\epsilon_X$) and translational ($\epsilon_L$) pools is motivated by the observation that these processes consume different substrates: transcription primarily consumes NTPs and the energy cofactors that regenerate them, while translation primarily consumes amino acids, charged tRNAs, and GTP. By tracking these pools independently, the model can identify which resource class is limiting under a given set of conditions --- a capability that proved central to the bottleneck analysis presented in the main text.
 
@@ -158,9 +141,33 @@ where $\theta_{m,j} = \delta_{m,j}\,\ln 2 / t_{1/2,m}$ is the effective degradat
 \frac{dp_j}{dt} = r_{L,j}\,\epsilon_L - \theta_{p,j}\,p_j \qquad j = 1, 2, 3
 \label{eq:protein_balance}
 \end{equation}
-where $\theta_{p,j} = \delta_{p,j}\,\ln 2 / t_{1/2,p}$. Together with the resource depletion equations (Eqns.~\ref{eq:epsX}--\ref{eq:epsL}), the algebraic expressions for transcription control (Eqns.~\ref{eq:u_GntR}--\ref{eq:u_Venus}), machinery allocation (Eqns.~\ref{eq:RX_free}--\ref{eq:RL_free}), and kinetic rates (Eqns.~\ref{eq:rX_general}, \ref{eq:rL_general}), this defines a closed system of 11 ODEs with 25 estimated parameters.
+where $\theta_{p,j} = \delta_{p,j}\,\ln 2 / t_{1/2,p}$. Together with the resource depletion equations (Eqns.~\ref{eq:S-epsX}--\ref{eq:S-epsL}), the algebraic expressions for transcription control (Eqns.~\ref{eq:u_GntR}--\ref{eq:u_Venus}), machinery allocation (Eqns.~\ref{eq:RX_free}--\ref{eq:RL_free}), and kinetic rates (Eqns.~\ref{eq:rX_general}, \ref{eq:rL_general}), this defines a closed system of 11 ODEs with 25 estimated parameters.
 
-\bibliographystyle{plos2009}
-\bibliography{References}
+\clearpage
 
-\end{document}
+\subsection*{S6. Supplemental Figures}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{./figs/fig-S1-resource_limitation_Pseudomonas.pdf}
+\end{center}
+\caption{Venus protein levels measured for two cases: addition of \textit{P.~aeruginosa} GntR gene and in the absence of GntR gene. Linear DNA used were: mP70-Venus (7 nM), P70-GntR (0 or 10 nM). The \textit{P.~aeruginosa} GntR variant does not bind to the \textit{E.~coli} GntR operator, serving as a control for resource competition effects.}\label{fig:S1}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{./figs/fig_pareto_fronts.pdf}
+\end{center}
+\caption{Pairwise projections of the six-dimensional Pareto front. Grey points represent the 41,280 archive solutions with total error $< 100$ (out of 73,747 total); blue points represent the $N = 78$ filtered ensemble members. \textbf{A}: Venus mRNA SSE versus Venus protein SSE. \textbf{B}: Venus protein SSE at 10 mM versus no-GntR control. \textbf{C}: Venus protein SSE at 10 mM versus 0 mM (repressed). \textbf{D}: Venus mRNA SSE versus GntR mRNA SSE. The filtered ensemble occupies the corner of the Pareto front where all objectives are simultaneously minimized.}\label{fig:pareto_fronts}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=1\textwidth]{./figs/fig_parameter_distributions.pdf}
+\end{center}
+\caption{Marginal parameter distributions across the filtered ensemble ($N = 78$). Each panel shows the histogram for one of the 25 estimated parameters. Black vertical lines indicate the ensemble mean; red dashed lines indicate the parameter bounds (where visible within the axis range). Parameters with narrow, unimodal distributions (e.g., $K_{\text{gluconate}}$, $n_{\text{gluconate}}$, $\alpha_X$) are well-identified by the data, while parameters with broad distributions (e.g., $K_{\text{Venus},\sigma_{70}}$, $\delta_{p,\text{Venus}}$) or distributions piling against bounds (e.g., $\delta_{m,\text{Venus}}$, $n_{\text{Venus,GntR}}$) indicate structural identifiability limitations.}\label{fig:param_dist}
+\end{figure}
