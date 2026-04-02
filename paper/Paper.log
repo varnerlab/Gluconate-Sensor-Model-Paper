@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  2 APR 2026 08:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.15)  2 APR 2026 08:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -453,7 +453,7 @@ e-mented in Pare-toEnsem-bles.jl
 ] [29] (./Paper.bbl [30
 
 ] [31] [32]
-Underfull \hbox (badness 1147) in paragraph at lines 252--256
+Underfull \hbox (badness 1147) in paragraph at lines 254--258
 []\OT1/phv/m/n/12 Varner JD (2026) Pare-toEnsem-bles.jl: A Ju-lia pack-age for 
 mul-ti-ob-jec-tive pa-
  []
@@ -594,7 +594,7 @@ Here is how much of TeX's memory you used:
  28793 multiletter control sequences out of 15000+600000
  588223 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,15n,65p,3044b,497s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,15n,65p,3044b,492s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
@@ -614,7 +614,7 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texm
 f-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2024/texmf-dist/
 fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
 ype1/urw/helvetic/uhvro8a.pfb>
-Output written on Paper.pdf (48 pages, 5947035 bytes).
+Output written on Paper.pdf (48 pages, 5947026 bytes).
 PDF statistics:
  506 PDF objects out of 1000 (max. 8388607)
  310 compressed objects within 4 object streams

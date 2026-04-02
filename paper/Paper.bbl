@@ -133,9 +133,11 @@ Voyvodic PL, Pandi A, Koch M, Conejero I, Valjent E, et~al. (2019)
 \bibAnnoteFile{voyvodic2019plug}
 
 \bibitem{gyorgy2016resource}
-Gy{\"o}rgy A, Jimenez JI, Yazbek J, Huang HH, Chung H, et~al. (2015) Isocost
-  lines describe the cellular economy of genetic circuits.
-\newblock Biophysical journal 109: 639--646.
+Gy{\"o}rgy A, Murray RM (2016) Quantifying resource competition and its effects
+  in the {TX-TL} system.
+\newblock In: 2016 IEEE 55th Conference on Decision and Control (CDC). pp.
+  3363--3368.
+\newblock \doi{10.1109/CDC.2016.7798775}.
 \bibAnnoteFile{gyorgy2016resource}
 
 \bibitem{weisse2015mechanistic}
